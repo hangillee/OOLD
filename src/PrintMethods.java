@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class PrintMethods {
-	public static void clearScreen() {
+	public static void ClearScreen() { //C의 system("cls"); 기능을 대충 구현, 개선 필요.
 	    for (int i = 0; i < 80; i++) {
 	      System.out.println("");
 	    }
@@ -33,7 +33,8 @@ public class PrintMethods {
 		
 		while (true) { //메인 메뉴 선택지
 			if(selectMenu == 1) {
-				storyStage.Prologue();
+				storyStage.Prologue(); //StoryStage의 Prologue메소드 호출
+				scan.close();
 				break;
 			} else if(selectMenu == 2) {
 				System.out.print("정말 게임을 종료하시겠습니까?(Y or N): ");
@@ -41,7 +42,7 @@ public class PrintMethods {
 				if(selectYN == 'Y' || selectYN == 'y') {
 					System.exit(0);
 				} else if(selectYN == 'N' || selectYN == 'n') {
-					PrintMainPage();
+					PrintMainPage(); //다시 메인 화면 출력
 					break;
 				} else {
 					System.out.println("잘못된 선택입니다. 다시 입력해주세요.");
