@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class StoryStage {
 	public void Stage01() {
 		PrintMethods.ClearScreen();
-		EnemyInfo dirtGolem = new EnemyInfo(100, 40, 10, "DIRT GOLEM"); //진흙 골렘 체력 100, 공격력 20, 방어력 20
+		int playerDefend = SetPlayerStat.player.getDefend();
+		EnemyInfo dirtGolem = new EnemyInfo(100, playerDefend+10, 10, "DIRT GOLEM"); //진흙 골렘 체력:100, 공격력:플레이어 방어력 + 10, 방어력:20
 		CharacterAct characterAct = new CharacterAct();
 		
 		int enemyHP, enemyAT, enemyDF;
