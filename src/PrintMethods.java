@@ -18,7 +18,7 @@ public class PrintMethods {
 	}
 	
 	public void PrintPrologue(){ //프롤로그 출력 메소드
-		ClearScreen();
+		//ClearScreen();
 		StoryStage storyStage = new StoryStage();
 		Scanner scan = new Scanner(System.in);
 		System.out.println("=============== Prologue ===============");
@@ -34,7 +34,7 @@ public class PrintMethods {
 		while(true) { //Enter키를 통해 진행을 위한 조건
 			if(insert.length() == 0) {
 				storyStage.Stage01();
-				scan.close();
+				//scan.close();
 				break;
 			}
 			else {
@@ -51,19 +51,24 @@ public class PrintMethods {
 		char selectYN; //게임 종료 확인 선택지용 변수
 		
 		System.out.println("");
-		System.out.println("1. 게임 시작"); //선택지 출력
-		System.out.println("2. 게임 종료");
-		System.out.print("선택 : ");
-		selectMenu = scan.nextInt();
+		System.out.println("1. Game Start"); //선택지 출력
+		System.out.println("2. Exit Game");
 		System.out.println("");
+		System.out.print("Select : ");
+		selectMenu = scan.nextInt();
 		
 		while (true) { //메인 메뉴 선택지
 			if(selectMenu == 1) {
+				SetPlayerStat.SetPlayerHealth();
+				SetPlayerStat.SetPlayerName();
+				SetPlayerStat.SetPlayerAttackStat();
+				SetPlayerStat.SetPlayerDefendStat();
 				PrintPrologue(); //PrintPrologue메소드 호출
 				scan.close();
 				break;
 			} else if(selectMenu == 2) {
-				System.out.print("정말 게임을 종료하시겠습니까?(Y or N): ");
+				System.out.println("");
+				System.out.print("Do you want to Exit game?(Y or N): ");
 				selectYN = scan.next().charAt(0);
 				if(selectYN == 'Y' || selectYN == 'y') {
 					System.exit(0);
@@ -71,11 +76,11 @@ public class PrintMethods {
 					PrintMainPage(); //다시 메인 화면 출력
 					break;
 				} else {
-					System.out.println("잘못된 선택입니다. 다시 입력해주세요.");
+					System.out.println("Please press right command.");
 					System.out.println("");
 				}
 			} else {
-				System.out.println("잘못된 메뉴를 선택하셨습니다. 다시 입력해주세요.");
+				System.out.println("Please press right command.");
 				System.out.println("");
 			}
 		}
