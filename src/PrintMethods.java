@@ -7,7 +7,7 @@ public class PrintMethods {
 	    }
 	}
 	
-	public static void PrintIntro() {
+	public static void PrintIntro() { //인트로 출력 메소드
 		System.out.println("========================================");
 		System.out.println("=                                      =");
 		System.out.println("=   Only One Life Dungeon              =");
@@ -17,9 +17,35 @@ public class PrintMethods {
 		System.out.println("========================================");
 	}
 	
-	public void PrintMainPage() {
-		Scanner scan = new Scanner(System.in);
+	public void PrintPrologue(){ //프롤로그 출력 메소드
+		ClearScreen();
 		StoryStage storyStage = new StoryStage();
+		Scanner scan = new Scanner(System.in);
+		System.out.println("=============== Prologue ===============");
+		System.out.println("=                                      =");
+		System.out.println("= Only one life is allowed to warrior! =");
+		System.out.println("=   Never make a mistake in DUNGEON!   =");
+		System.out.println("=                                      =");
+		System.out.println("========================================");
+		System.out.println("");
+		System.out.println("       Press Enter to continue...       ");
+		String insert = scan.nextLine();
+		
+		while(true) { //Enter키를 통해 진행을 위한 조건
+			if(insert.length() == 0) {
+				storyStage.Stage01();
+				scan.close();
+				break;
+			}
+			else {
+				System.out.println("     Please Press ENTER to continue!     ");
+				insert = scan.nextLine();
+			}
+		}
+	}
+	
+	public void PrintMainPage() { //메인 화면 - 선택 출력 메소드
+		Scanner scan = new Scanner(System.in);
 		
 		int selectMenu = 0; //메인 화면 선택지용 변수
 		char selectYN; //게임 종료 확인 선택지용 변수
@@ -33,7 +59,7 @@ public class PrintMethods {
 		
 		while (true) { //메인 메뉴 선택지
 			if(selectMenu == 1) {
-				storyStage.Prologue(); //StoryStage의 Prologue메소드 호출
+				PrintPrologue(); //PrintPrologue메소드 호출
 				scan.close();
 				break;
 			} else if(selectMenu == 2) {
