@@ -1,5 +1,5 @@
 
-public class CharacterInfo {
+public class Character {
 	private int health = 0;
 	private int attack = 0;
 	private int defend = 0;

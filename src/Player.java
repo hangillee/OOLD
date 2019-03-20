@@ -1,14 +1,23 @@
 import java.util.Scanner;
 
-public class SetPlayerStat {
-	static CharacterInfo player = new CharacterInfo();
+public class Player extends Character {
+	//Singleton
+	private Player() {}
+	private static class CreatePlayer {
+		private static final Player player = new Player();
+	}
+	public static Player getInstance() {
+		return CreatePlayer.player;
+	}
+	//Singleton
+	
 	static int maximumstat = 50;
 	
-	public static void SetPlayerHealth() {
-		player.setHealth(100);
+	public void SetPlayerHealth() {
+		this.setHealth(100);
 	}
 
-	public static void SetPlayerName() {
+	public void SetPlayerName() {
 		Scanner scan = new Scanner(System.in);
 		String name;
 		char selectYN;
@@ -29,6 +38,7 @@ public class SetPlayerStat {
 				System.out.println("Welcome to the JAVA DUNGEON " + name + "!");
 				System.out.println("===================================");
 				System.out.println("");
+				this.setName(name);
 				break;
 			} else {
 				System.out.println("Please Enter right command!");
@@ -37,7 +47,7 @@ public class SetPlayerStat {
 		}
 	}
 	
-	public static void SetPlayerAttackStat() { //캐릭터 공격력 스탯 설정 메소드
+	public void SetPlayerAttackStat() { //캐릭터 공격력 스탯 설정 메소드
 		Scanner scan = new Scanner(System.in);
 		int attack;
 		
@@ -51,11 +61,11 @@ public class SetPlayerStat {
 				System.out.println("Please set right value.");
 				System.out.println("");
 			} else {
-				player.setAttack(attack + 30);
+				this.setAttack(attack + 30);
 				maximumstat = maximumstat - attack;
 				System.out.println("");
 				System.out.println("=========================");
-				System.out.println("Your Attack stat is [ " + player.getAttack() + " ]");
+				System.out.println("Your Attack stat is [ " + this.getAttack() + " ]");
 				System.out.println("=========================");
 				System.out.println("");
 				//scan.close();
@@ -63,19 +73,19 @@ public class SetPlayerStat {
 			}
 		}
 	}
-	public static void SetPlayerDefendStat() { //캐릭터 방어력 스탯 설정 메소드
+	public void SetPlayerDefendStat() { //캐릭터 방어력 스탯 설정 메소드
 		Scanner scan = new Scanner(System.in);
 		
 		int defend;
 		
 		while(true) {
 			System.out.println("Your Basic Defend Stat is [ 30 ]");
-			if(maximumstat == 0) {
+			if(maximumstat == 0) { //투자 가능한 스탯 포인트 모두 소진 시
 				System.out.println("No more stat point remain");
-				player.setDefend(30);
+				this.setDefend(30);
 				System.out.println("");
 				System.out.println("=========================");
-				System.out.println("Your Defend stat is [ " + player.getDefend() + " ]");
+				System.out.println("Your Defend stat is [ " + this.getDefend() + " ]");
 				System.out.println("=========================");
 				System.out.println("");
 				//scan.close();
@@ -89,10 +99,10 @@ public class SetPlayerStat {
 				System.out.println("Please set right value.");
 				System.out.println("");
 			} else {
-				player.setDefend(defend + 30);
+				this.setDefend(defend + 30);
 				System.out.println("");
 				System.out.println("=========================");
-				System.out.println("Your Defend stat is [ " + player.getDefend() + " ]");
+				System.out.println("Your Defend stat is [ " + this.getDefend() + " ]");
 				System.out.println("=========================");
 				System.out.println("");
 				//scan.close();

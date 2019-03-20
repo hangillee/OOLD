@@ -3,15 +3,16 @@ import java.util.Scanner;
 public class CharacterAct {
 	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
 		Scanner scan = new Scanner(System.in);
+		Player player = Player.getInstance();
 		
-		char selectAS;
+		char selectAS; //선택지 변수
 		
 		int playerHP, playerAT, playerDF;
 		int damage;
 		
-		playerHP = SetPlayerStat.player.getHealth(); //플레이어의 스탯 데이터 받아옴
-		playerAT = SetPlayerStat.player.getAttack();
-		playerDF = SetPlayerStat.player.getDefend();
+		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
+		playerAT = player.getAttack();
+		playerDF = player.getDefend();
 		
 		while(enemyHP > 0 && enemyHP != 0) { //진흙 골렘의 체력이 0이 될때까지
 			System.out.println("What should you do?");
@@ -53,16 +54,18 @@ public class CharacterAct {
 		}
 	}
 	public void EnemyAct(int enemyAT, int enemyDF, String enemyNAME) { //적 공격 메소드
+		Player player = Player.getInstance();
 		int playerHP, playerDF;
 		int damage;
 		
-		playerHP = SetPlayerStat.player.getHealth(); //플레이어의 스탯 데이터 받아옴
-		playerDF = SetPlayerStat.player.getDefend();
+		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
+		playerDF = player.getDefend();
 		
 		System.out.println("=========================");
 		System.out.println(enemyNAME + "'s Attack!");
 		damage = enemyAT - playerDF; //데미지 계산식
 		playerHP = playerHP - damage;
+		player.setHealth(playerHP);
 		System.out.println("Your left HP : " + playerHP);
 		System.out.println("=========================");
 		System.out.println("");

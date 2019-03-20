@@ -3,8 +3,10 @@ import java.util.Scanner;
 public class StoryStage {
 	public void Stage01() {
 		PrintMethods.ClearScreen();
-		int playerDefend = SetPlayerStat.player.getDefend();
-		EnemyInfo dirtGolem = new EnemyInfo(100, playerDefend+10, 10, "DIRT GOLEM"); //진흙 골렘 체력:100, 공격력:플레이어 방어력 + 10, 방어력:20
+		Player player = Player.getInstance();
+		int playerDefend = player.getDefend();
+		
+		Enemy dirtGolem = new Enemy(100, playerDefend+10, 10, "DIRT GOLEM"); //진흙 골렘 체력:100, 공격력:플레이어 방어력 + 10, 방어력:20
 		CharacterAct characterAct = new CharacterAct();
 		
 		int enemyHP, enemyAT, enemyDF;
@@ -32,7 +34,7 @@ public class StoryStage {
 	}
 	public void Stage02() {
 		PrintMethods.ClearScreen();
-		EnemyInfo stoneGolem = new EnemyInfo(200, 60, 20, "STONE GOLEM"); //진흙 골렘 체력 100, 공격력 20, 방어력 20
+		Enemy stoneGolem = new Enemy(200, 60, 20, "STONE GOLEM"); //진흙 골렘 체력 100, 공격력 20, 방어력 20
 		CharacterAct characterAct = new CharacterAct();
 		
 		int enemyHP, enemyAT, enemyDF;

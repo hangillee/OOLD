@@ -59,10 +59,11 @@ public class PrintMethods {
 		
 		while (true) { //메인 메뉴 선택지
 			if(selectMenu == 1) {
-				SetPlayerStat.SetPlayerHealth();
-				SetPlayerStat.SetPlayerName();
-				SetPlayerStat.SetPlayerAttackStat();
-				SetPlayerStat.SetPlayerDefendStat();
+				Player player = Player.getInstance();
+				player.SetPlayerHealth();
+				player.SetPlayerName();
+				player.SetPlayerAttackStat();
+				player.SetPlayerDefendStat();
 				PrintPrologue(); //PrintPrologue메소드 호출
 				scan.close();
 				break;
