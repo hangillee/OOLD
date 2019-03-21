@@ -32,6 +32,7 @@ public class Player extends Character {
 		
 			if(selectYN == 'N' || selectYN == 'n') {
 				SetPlayerName();
+				break;
 			} else if(selectYN == 'Y' || selectYN == 'y') {
 				System.out.println("");
 				System.out.println("===================================");
@@ -41,8 +42,8 @@ public class Player extends Character {
 				this.setName(name);
 				break;
 			} else {
-				System.out.println("Please Enter right command!");
 				System.out.println("");
+				System.out.println("Please Enter right command!");
 			}
 		}
 	}

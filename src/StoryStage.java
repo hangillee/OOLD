@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class StoryStage {
 	public void Stage01() {
@@ -6,7 +5,7 @@ public class StoryStage {
 		Player player = Player.getInstance();
 		int playerDefend = player.getDefend();
 		
-		Enemy dirtGolem = new Enemy(100, playerDefend+10, 10, "DIRT GOLEM"); //진흙 골렘 체력:100, 공격력:플레이어 방어력 + 10, 방어력:20
+		Enemy dirtGolem = new Enemy(100, playerDefend+10, 10, "DIRT GOLEM"); //진흙 골렘 체력:100, 공격력:플레이어 방어력 + 10, 방어력:10
 		CharacterAct characterAct = new CharacterAct();
 		
 		int enemyHP, enemyAT, enemyDF;
@@ -34,13 +33,16 @@ public class StoryStage {
 	}
 	public void Stage02() {
 		PrintMethods.ClearScreen();
-		Enemy stoneGolem = new Enemy(200, 60, 20, "STONE GOLEM"); //진흙 골렘 체력 100, 공격력 20, 방어력 20
+		Player player = Player.getInstance();
+		int playerDefend = player.getDefend();
+		
+		Enemy stoneGolem = new Enemy(200, playerDefend+15, 20, "STONE GOLEM"); //바위 골렘 체력:200, 공격력:플레이어 방어력+15, 방어력:20
 		CharacterAct characterAct = new CharacterAct();
 		
 		int enemyHP, enemyAT, enemyDF;
 		String enemyNAME;
 		
-		enemyHP = stoneGolem.getHealth(); //처음 진흙 골렘 체력 데이터 받아옴
+		enemyHP = stoneGolem.getHealth(); //처음 바위 골렘 체력 데이터 받아옴
 		enemyAT = stoneGolem.getAttack();
 		enemyDF = stoneGolem.getDefend();
 		enemyNAME = stoneGolem.getName();
