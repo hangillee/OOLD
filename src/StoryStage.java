@@ -36,7 +36,8 @@ public class StoryStage {
 		Player player = Player.getInstance();
 		int playerDefend = player.getDefend();
 		
-		Enemy stoneGolem = new Enemy(200, playerDefend+15, 20, "STONE GOLEM"); //바위 골렘 체력:200, 공격력:플레이어 방어력+15, 방어력:20
+		//바위 골렘 체력:200, 공격력:플레이어 방어력+15, 방어력:20
+		Enemy stoneGolem = new Enemy(200, playerDefend+15, 20, "STONE GOLEM"); 
 		CharacterAct characterAct = new CharacterAct();
 		
 		int enemyHP, enemyAT, enemyDF;

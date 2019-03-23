@@ -1,18 +1,14 @@
 import java.util.Scanner;
 
 public class CharacterAct {
+	private static final Scanner scan = new Scanner(System.in);
 	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
-		Scanner scan = new Scanner(System.in);
 		Player player = Player.getInstance();
 		
 		char selectAS; //선택지 변수
-		char selectYN;
 		
-		int playerAT;
 		int playerHP;
-		
-		playerAT = player.getAttack(); //플레이어의 스탯 데이터 받아옴
-		playerHP = player.getHealth();
+		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
 		
 		while(true) { //적의 체력이 0이 될때까지
 			System.out.println("What should you do?");
@@ -47,7 +43,8 @@ public class CharacterAct {
 			}
 		}
 	}
-	public void EnemyAct(int enemyAT, int enemyDF, String enemyNAME) { //적 공격 메소드
+	//적의 공격 메소드
+	public void EnemyAct(int enemyAT, int enemyDF, String enemyNAME) {
 		Player player = Player.getInstance();
 		int playerHP, playerDF;
 		int damage;
@@ -64,6 +61,7 @@ public class CharacterAct {
 		System.out.println("==============================");
 		System.out.println("");
 	}
+	//일반 공격 메소드
 	public int NormalAttack(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
 		Player player = Player.getInstance();
 		
@@ -84,6 +82,7 @@ public class CharacterAct {
 		
 		return enemyHP;
 	}
+	//스킬 공격 메소드
 	public int SkillAttack(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
 		Player player = Player.getInstance();
 		
@@ -104,9 +103,9 @@ public class CharacterAct {
 		
 		return enemyHP;
 	}
-	public void StageClear(String enemyNAME) { //Stage 클리어 시 출력 메소드
+	//Stage 클리어 시 출력 메소드
+	public void StageClear(String enemyNAME) {
 		Player player = Player.getInstance();
-		Scanner scan = new Scanner(System.in);
 		
 		player.setHealth(100); //플레이어 클리어 후 체력 초기화
 		System.out.println("==============================");
@@ -129,8 +128,8 @@ public class CharacterAct {
 			}
 		}
 	}
-	public void GameOver() { //게임 오버 시 출력 메소드
-		Scanner scan = new Scanner(System.in);
+	//게임 오버 시 출력 메소드
+	public void GameOver() {
 		char selectYN;
 		
 		System.out.println("==============================");
@@ -146,6 +145,7 @@ public class CharacterAct {
 		if(selectYN=='Y'||selectYN=='y') {
 			Player.maximumstat = 50; //스탯 포인트 초기화
 			PrintMethods.ClearScreen();
+			scan.close();
 			MainPage.main(null); //다시 시작
 		} else if(selectYN=='N'||selectYN=='n') {
 			System.out.println("");

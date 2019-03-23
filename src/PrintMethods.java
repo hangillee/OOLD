@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class PrintMethods {
+	private static final Scanner scan = new Scanner(System.in);
 	public static void ClearScreen() { //C의 system("cls"); 기능을 대충 구현, 개선 필요.
 	    for (int i = 0; i < 80; i++) {
 	      System.out.println("");
@@ -20,7 +21,6 @@ public class PrintMethods {
 	public void PrintPrologue(){ //프롤로그 출력 메소드
 		//ClearScreen();
 		StoryStage storyStage = new StoryStage();
-		Scanner scan = new Scanner(System.in);
 		System.out.println("=============== Prologue ===============");
 		System.out.println("=                                      =");
 		System.out.println("= Only one life is allowed to warrior! =");
@@ -45,7 +45,6 @@ public class PrintMethods {
 	}
 	
 	public void PrintMainPage() { //메인 화면 - 선택 출력 메소드
-		Scanner scan = new Scanner(System.in);
 		
 		int selectMenu = 0; //메인 화면 선택지용 변수
 		char selectYN; //게임 종료 확인 선택지용 변수

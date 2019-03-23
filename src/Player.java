@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Player extends Character {
+	private static final Scanner scan = new Scanner(System.in);
+	
 	//Singleton
 	private Player() {}
 	private static class CreatePlayer {
@@ -18,8 +20,6 @@ public class Player extends Character {
 	}
 
 	public void SetPlayerName() {
-		PrintMethods printMethods = new PrintMethods();
-		Scanner scan = new Scanner(System.in);
 		String name;
 		char selectYN;
 		
@@ -39,7 +39,7 @@ public class Player extends Character {
 				SetPlayerName();
 				break;
 			} else if(selectYN == 'Y' || selectYN == 'y') {
-				printMethods.ClearScreen();
+				PrintMethods.ClearScreen();
 				System.out.println("");
 				System.out.println("=============================================");
 				System.out.println("");
@@ -57,7 +57,6 @@ public class Player extends Character {
 	}
 	
 	public void SetPlayerAttackStat() { //캐릭터 공격력 스탯 설정 메소드
-		Scanner scan = new Scanner(System.in);
 		int attack;
 		
 		while(true) {
@@ -83,7 +82,6 @@ public class Player extends Character {
 		}
 	}
 	public void SetPlayerDefendStat() { //캐릭터 방어력 스탯 설정 메소드
-		Scanner scan = new Scanner(System.in);
 		
 		int defend;
 		
