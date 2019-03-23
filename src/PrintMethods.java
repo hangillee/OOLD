@@ -30,6 +30,7 @@ public class PrintMethods {
 		System.out.println("");
 		System.out.println("       Press Enter to continue...       ");
 		String insert = scan.nextLine();
+		insert = scan.nextLine(); //nextInt();의 개행문자 문제 해결을 위한 추가 nextLine();
 		
 		while(true) { //Enter키를 통해 진행을 위한 조건
 			if(insert.length() == 0) {
@@ -45,7 +46,6 @@ public class PrintMethods {
 	}
 	
 	public void PrintMainPage() { //메인 화면 - 선택 출력 메소드
-		
 		int selectMenu = 0; //메인 화면 선택지용 변수
 		char selectYN; //게임 종료 확인 선택지용 변수
 		
@@ -64,7 +64,6 @@ public class PrintMethods {
 				player.SetPlayerAttackStat();
 				player.SetPlayerDefendStat();
 				PrintPrologue(); //PrintPrologue메소드 호출
-				scan.close();
 				break;
 			} else if(selectMenu == 2) {
 				System.out.println("");

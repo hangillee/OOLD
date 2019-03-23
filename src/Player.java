@@ -82,7 +82,6 @@ public class Player extends Character {
 		}
 	}
 	public void SetPlayerDefendStat() { //캐릭터 방어력 스탯 설정 메소드
-		
 		int defend;
 		
 		while(true) {
