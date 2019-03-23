@@ -54,7 +54,7 @@ public class PrintMethods {
 		System.out.println("1. Game Start"); //선택지 출력
 		System.out.println("2. Exit Game");
 		System.out.println("");
-		System.out.print("Select : ");
+		System.out.print("▶ Select : ");
 		selectMenu = scan.nextInt();
 		
 		while (true) { //메인 메뉴 선택지
@@ -69,7 +69,7 @@ public class PrintMethods {
 				break;
 			} else if(selectMenu == 2) {
 				System.out.println("");
-				System.out.print("Do you want to Exit game?(Y or N): ");
+				System.out.print("▶ Do you want to Exit game?(Y or N) : ");	
 				selectYN = scan.next().charAt(0);
 				if(selectYN == 'Y' || selectYN == 'y') {
 					System.exit(0);
@@ -77,11 +77,11 @@ public class PrintMethods {
 					PrintMainPage(); //다시 메인 화면 출력
 					break;
 				} else {
-					System.out.println("Please press right command.");
+					System.out.println("▶ Please press right command.");
 					System.out.println("");
 				}
 			} else {
-				System.out.println("Please press right command.");
+				System.out.println("▶ Please press right command.");
 				System.out.println("");
 			}
 		}

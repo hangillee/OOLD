@@ -23,9 +23,9 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println("DIRT GOLEM BLOCKS YOUR WAY!");
-		System.out.println(enemyNAME + "'s HP : " + enemyHP); //柳入 榜方 眉仿
-		System.out.println(enemyNAME + "'s STR : " + enemyAT); //柳入 榜方 傍拜仿
-		System.out.println(enemyNAME + "'s DEF : " + enemyDF); //柳入 榜方 规绢仿
+		System.out.println("⒑ " + enemyNAME + "'s HP : " + enemyHP); //柳入 榜方 眉仿
+		System.out.println("⒑ " + enemyNAME + "'s STR : " + enemyAT); //柳入 榜方 傍拜仿
+		System.out.println("⒑ " + enemyNAME + "'s DEF : " + enemyDF); //柳入 榜方 规绢仿
 		System.out.println("");
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyNAME);
@@ -54,9 +54,9 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
-		System.out.println(enemyNAME + "'s HP : " + enemyHP); //柳入 榜方 眉仿
-		System.out.println(enemyNAME + "'s STR : " + enemyAT); //柳入 榜方 傍拜仿
-		System.out.println(enemyNAME + "'s DEF : " + enemyDF); //柳入 榜方 规绢仿
+		System.out.println("⒑ " + enemyNAME + "'s HP : " + enemyHP); //官困 榜方 眉仿
+		System.out.println("⒑ " + enemyNAME + "'s STR : " + enemyAT); //官困 榜方 傍拜仿
+		System.out.println("⒑ " + enemyNAME + "'s DEF : " + enemyDF); //官困 榜方 规绢仿
 		System.out.println("");
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyNAME);
