@@ -5,15 +5,24 @@ public class StoryStage {
 		Player player = Player.getInstance();
 		int playerDefend = player.getDefend();
 		
-		Enemy dirtGolem = new Enemy(100, playerDefend+10, 10, "DIRT GOLEM"); //진흙 골렘 체력:100, 공격력:플레이어 방어력 + 10, 방어력:10
-		CharacterAct characterAct = new CharacterAct();
+		//진흙 골렘 체력:100, 공격력:플레이어 방어력 +10, 방어력:10, 민첩성:10
+		Enemy dirtGolem = new Enemy();
+		dirtGolem.setHealth(100);
+		dirtGolem.setAttack(playerDefend+10);
+		dirtGolem.setDefend(10);
+		dirtGolem.setDexterity(10);
+		dirtGolem.setName("DirtGolem");
 		
-		int enemyHP, enemyAT, enemyDF;
+		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
+		
+		int enemyHP, enemyAT, enemyDF, enemyDX;
 		String enemyNAME;
 		
-		enemyHP = dirtGolem.getHealth(); //처음 진흙 골렘 체력 데이터 받아옴
+		//처음 진흙 골렘 능력치 데이터 받아옴
+		enemyHP = dirtGolem.getHealth(); 
 		enemyAT = dirtGolem.getAttack();
 		enemyDF = dirtGolem.getDefend();
+		enemyDX = dirtGolem.getDexterity();
 		enemyNAME = dirtGolem.getName();
 		
 		System.out.println("============== Stage 01 ==============");
@@ -26,9 +35,10 @@ public class StoryStage {
 		System.out.println("▶ " + enemyNAME + "'s HP : " + enemyHP); //진흙 골렘 체력
 		System.out.println("▶ " + enemyNAME + "'s STR : " + enemyAT); //진흙 골렘 공격력
 		System.out.println("▶ " + enemyNAME + "'s DEF : " + enemyDF); //진흙 골렘 방어력
+		System.out.println("▶ " + enemyNAME + "'s DEX : " + enemyDX); //진흙 골렘 민첩성
 		System.out.println("");
 		
-		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyNAME);
+		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME);
 		Stage02();
 	}
 	public void Stage02() {
@@ -36,16 +46,24 @@ public class StoryStage {
 		Player player = Player.getInstance();
 		int playerDefend = player.getDefend();
 		
-		//바위 골렘 체력:200, 공격력:플레이어 방어력+15, 방어력:20
-		Enemy stoneGolem = new Enemy(200, playerDefend+15, 20, "STONE GOLEM"); 
-		CharacterAct characterAct = new CharacterAct();
+		//바위 골렘 체력:200, 공격력:플레이어 방어력+15, 방어력:20, 민첩성:20
+		Enemy stoneGolem = new Enemy(); 
+		stoneGolem.setHealth(200);
+		stoneGolem.setAttack(playerDefend+15);
+		stoneGolem.setDefend(20);
+		stoneGolem.setDexterity(20);
+		stoneGolem.setName("STONE GOLEM");
 		
-		int enemyHP, enemyAT, enemyDF;
+		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
+		
+		int enemyHP, enemyAT, enemyDF, enemyDX;
 		String enemyNAME;
 		
-		enemyHP = stoneGolem.getHealth(); //처음 바위 골렘 체력 데이터 받아옴
+		//처음 바위 골렘 체력 데이터 받아옴
+		enemyHP = stoneGolem.getHealth(); 
 		enemyAT = stoneGolem.getAttack();
 		enemyDF = stoneGolem.getDefend();
+		enemyDX = stoneGolem.getDexterity();
 		enemyNAME = stoneGolem.getName();
 		
 		System.out.println("============== Stage 02 ==============");
@@ -60,7 +78,7 @@ public class StoryStage {
 		System.out.println("▶ " + enemyNAME + "'s DEF : " + enemyDF); //바위 골렘 방어력
 		System.out.println("");
 		
-		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyNAME);
+		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME);
 		//Stage03();
 	}
 }

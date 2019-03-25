@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class CharacterAct {
 	private static final Scanner scan = new Scanner(System.in);
-	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
+	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, int enemyDX, String enemyNAME) {
 		Player player = Player.getInstance();
 		Random random = new Random(); //공격 확률 결정
 		
@@ -11,7 +11,6 @@ public class CharacterAct {
 		
 		int playerHP;
 		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
-		
 		
 		while(true) { //적의 체력이 0이 될때까지
 			System.out.println("What should you do?");
@@ -22,7 +21,7 @@ public class CharacterAct {
 			
 			if(selectAS == 'A' || selectAS == 'a') { //일반 공격 선택지
 				playerHP = player.getHealth();
-				if(random.nextInt(10)<5) { //5:5의 확률로 공격 or 빗나감 결정
+				if(random.nextInt(100)<enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
 					System.out.println("==============================");
 					System.out.println("        Attack Missed!        ");
@@ -42,7 +41,7 @@ public class CharacterAct {
 				}
 			} else if(selectAS == 'S' || selectAS == 's') { //스킬 공격 선택지
 				playerHP = player.getHealth();
-				if(random.nextInt(10)<5) { //5:5의 확률로 공격 or 빗나감 결정
+				if(random.nextInt(100)<enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
 					System.out.println("==============================");
 					System.out.println("        Attack Missed!        ");
@@ -69,20 +68,33 @@ public class CharacterAct {
 	//적의 공격 메소드
 	public void EnemyAct(int enemyAT, int enemyDF, String enemyNAME) {
 		Player player = Player.getInstance();
-		int playerHP, playerDF;
+		Random random = new Random();
+		
+		int playerHP, playerDF, playerDX;
 		int damage;
 		
 		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
 		playerDF = player.getDefend();
+		playerDX = player.getDexterity();
 		
-		System.out.println("==============================");
-		System.out.println("     " + enemyNAME + "'s Attack!");
-		damage = enemyAT - playerDF; //데미지 계산식
-		playerHP = playerHP - damage;
-		player.setHealth(playerHP);
-		System.out.println("      Your left HP : " + playerHP);
-		System.out.println("==============================");
-		System.out.println("");
+		if(random.nextInt(100)<playerDX) { //민첩성의 확률로 공격 or 빗나감 결정
+			System.out.println("");
+			System.out.println("==============================");
+			System.out.println("   " + enemyNAME + " Attack Missed!");
+			System.out.println("      Your left HP : " + playerHP);
+			System.out.println("==============================");
+			System.out.println("");
+		} else {
+			System.out.println("==============================");
+			System.out.println("     " + enemyNAME + "'s Attack!");
+			damage = enemyAT - playerDF; //데미지 계산식
+			playerHP = playerHP - damage;
+			player.setHealth(playerHP);
+			System.out.println("      Your left HP : " + playerHP);
+			System.out.println("==============================");
+			System.out.println("");
+		}
+		
 	}
 	//일반 공격 메소드
 	public int NormalAttack(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {

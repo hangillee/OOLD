@@ -3,6 +3,7 @@ public class Character {
 	private int health = 0;
 	private int attack = 0;
 	private int defend = 0;
+	private int dexterity = 0;
 	private String name;
 	
 	public int getHealth() {
@@ -24,6 +25,13 @@ public class Character {
 	}
 	public void setDefend(int defend) {
 		this.defend = defend;
+	}
+	
+	public int getDexterity() {
+		return dexterity;
+	}
+	public void setDexterity(int dexterity) {
+		this.dexterity = dexterity;
 	}
 	
 	public String getName() {

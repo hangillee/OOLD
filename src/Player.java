@@ -67,7 +67,7 @@ public class Player extends Character {
 			System.out.println("");
 			System.out.print("▶ Add Your Attack Stat : ");
 			
-			while(!scan.hasNextInt()) {
+			while(!scan.hasNextInt()) { //숫자 커맨드 입력 확인 숫자가 아닐 시 while문 실행
 				scan.next();
 				System.out.println("");
 				System.out.println("===================================");
@@ -112,7 +112,7 @@ public class Player extends Character {
 			System.out.println("");
 			System.out.print("▶ Add Your Defend Stat : ");
 			
-			while(!scan.hasNextInt()) {
+			while(!scan.hasNextInt()) { //숫자 입력 확인 숫자가 아닐 시 while문 실행
 				scan.next();
 				System.out.println("");
 				System.out.println("===================================");
@@ -129,12 +129,58 @@ public class Player extends Character {
 				System.out.println("");
 			} else {
 				this.setDefend(defend + 30);
+				maximumstat = maximumstat - defend;
 				System.out.println("▶ Your Defend stat is [ " + this.getDefend() + " ]");
 				System.out.println("");
 				//scan.close();
 				break;
 			}
 		}
+	}
+	public void SetPlayerDexterity() {
+		int dexterity;
 		
+		while(true) {
+			System.out.println("===================================");
+			System.out.println("Your Basic Dexterity Stat is [ 10 ]");
+			if(maximumstat == 0) { //투자 가능한 스탯 포인트 모두 소진 시
+				System.out.println("No more stat point remain");
+				System.out.println("===================================");
+				System.out.println("");
+				this.setDefend(30);
+				System.out.println("▶ Your Dexterity stat is [ " + this.getDexterity() + " ]");
+				System.out.println("");
+				//scan.close();
+				break;
+			}
+			System.out.println("Remain Stat Point : [ " + maximumstat + " ]");
+			System.out.println("===================================");
+			System.out.println("");
+			System.out.print("▶ Add Your Dexterity Stat : ");
+			
+			while(!scan.hasNextInt()) { //숫자 입력 확인 숫자가 아닐 시 while문 실행
+				scan.next();
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("        Please Enter Number        ");
+				System.out.println("===================================");
+				System.out.println("");
+				System.out.print("▶ Add Your Defend Stat : ");
+			}
+			
+			dexterity = scan.nextInt();
+		
+			if(dexterity > maximumstat || dexterity < 1) {
+				System.out.println("▶ Please add right value.");
+				System.out.println("");
+			} else {
+				this.setDexterity(dexterity + 10);
+				maximumstat = maximumstat - dexterity;
+				System.out.println("▶ Your Dexterity stat is [ " + this.getDexterity() + " ]");
+				System.out.println("");
+				//scan.close();
+				break;
+			}
+		}
 	}
 }

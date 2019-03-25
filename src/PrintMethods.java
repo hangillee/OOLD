@@ -75,6 +75,7 @@ public class PrintMethods {
 				player.SetPlayerName();
 				player.SetPlayerAttackStat();
 				player.SetPlayerDefendStat();
+				player.SetPlayerDexterity();
 				PrintPrologue(); //PrintPrologue메소드 호출
 				break;
 			} else if(selectMenu == 2) {
