@@ -54,6 +54,18 @@ public class PrintMethods {
 		System.out.println("2. Exit Game");
 		System.out.println("");
 		System.out.print("▶ Select : ");
+		while(!scan.hasNextInt()) { //숫자 커맨드 입력 확인 숫자가 아닐 시 while문 실행
+			scan.next();
+			System.out.println("");
+			System.out.println("===================================");
+			System.out.println("    Please Enter Right Command!    ");
+			System.out.println("===================================");
+			System.out.println("");
+			System.out.println("1. Game Start"); //선택지 출력
+			System.out.println("2. Exit Game");
+			System.out.println("");
+			System.out.print("▶ Select : ");
+		}
 		selectMenu = scan.nextInt();
 		
 		while (true) { //메인 메뉴 선택지

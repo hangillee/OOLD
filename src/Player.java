@@ -19,7 +19,7 @@ public class Player extends Character {
 		this.setHealth(100);
 	}
 
-	public void SetPlayerName() {
+	public void SetPlayerName() { //캐릭터 이름 설정
 		String name;
 		char selectYN;
 		
@@ -66,6 +66,16 @@ public class Player extends Character {
 			System.out.println("===================================");
 			System.out.println("");
 			System.out.print("▶ Add Your Attack Stat : ");
+			
+			while(!scan.hasNextInt()) {
+				scan.next();
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("        Please Enter Number        ");
+				System.out.println("===================================");
+				System.out.println("");
+				System.out.print("▶ Add Your Attack Stat : ");
+			}
 			attack = scan.nextInt();
 		
 			if(attack > maximumstat || attack < 1) {
@@ -101,6 +111,17 @@ public class Player extends Character {
 			System.out.println("===================================");
 			System.out.println("");
 			System.out.print("▶ Add Your Defend Stat : ");
+			
+			while(!scan.hasNextInt()) {
+				scan.next();
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("        Please Enter Number        ");
+				System.out.println("===================================");
+				System.out.println("");
+				System.out.print("▶ Add Your Defend Stat : ");
+			}
+			
 			defend = scan.nextInt();
 		
 			if(defend > maximumstat || defend < 1) {
