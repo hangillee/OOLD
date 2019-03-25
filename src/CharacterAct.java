@@ -1,14 +1,17 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class CharacterAct {
 	private static final Scanner scan = new Scanner(System.in);
 	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
 		Player player = Player.getInstance();
+		Random random = new Random(); //공격 확률 결정
 		
 		char selectAS; //선택지 변수
 		
 		int playerHP;
 		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
+		
 		
 		while(true) { //적의 체력이 0이 될때까지
 			System.out.println("What should you do?");
@@ -18,8 +21,18 @@ public class CharacterAct {
 			selectAS = scan.nextLine().charAt(0);
 			
 			if(selectAS == 'A' || selectAS == 'a') { //일반 공격 선택지
-				enemyHP = NormalAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
 				playerHP = player.getHealth();
+				if(random.nextInt(10)<5) { //5:5의 확률로 공격 or 빗나감 결정
+					System.out.println("");
+					System.out.println("==============================");
+					System.out.println("        Attack Missed!        ");
+					System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
+					System.out.println("==============================");
+					System.out.println("");
+					EnemyAct(enemyAT, enemyDF, enemyNAME);
+				} else {
+					enemyHP = NormalAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
+				}
 				if(enemyHP < 0 || enemyHP == 0) {
 					StageClear(enemyNAME);
 					break;
@@ -28,8 +41,18 @@ public class CharacterAct {
 					break;
 				}
 			} else if(selectAS == 'S' || selectAS == 's') { //스킬 공격 선택지
-				enemyHP = SkillAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
 				playerHP = player.getHealth();
+				if(random.nextInt(10)<5) { //5:5의 확률로 공격 or 빗나감 결정
+					System.out.println("");
+					System.out.println("==============================");
+					System.out.println("        Attack Missed!        ");
+					System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
+					System.out.println("==============================");
+					System.out.println("");
+					EnemyAct(enemyAT, enemyDF, enemyNAME);
+				} else {
+					enemyHP = NormalAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
+				}
 				if(enemyHP < 0 || enemyHP == 0) {
 					StageClear(enemyNAME);
 					break;
