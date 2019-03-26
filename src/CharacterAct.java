@@ -7,7 +7,7 @@ public class CharacterAct {
 		Player player = Player.getInstance();
 		Random random = new Random(); //공격 확률 결정
 		
-		char selectAS; //선택지 변수
+		String selectAS; //선택지 변수
 		
 		int playerHP;
 		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
@@ -17,11 +17,11 @@ public class CharacterAct {
 			System.out.println("A. NORMAL ATTACK");
 			System.out.println("S. SKILL ATTACK");
 			System.out.print("▶ Select : ");
-			selectAS = scan.nextLine().charAt(0);
+			selectAS = scan.nextLine();
 			
-			if(selectAS == 'A' || selectAS == 'a') { //일반 공격 선택지
-				playerHP = player.getHealth();
-				if(random.nextInt(100)<enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
+			if(selectAS.equals("A") || selectAS.equals("a")) { //일반 공격 선택지
+				
+				if(random.nextInt(100) < enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
 					System.out.println("==============================");
 					System.out.println("        Attack Missed!        ");
@@ -32,16 +32,20 @@ public class CharacterAct {
 				} else {
 					enemyHP = NormalAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
 				}
-				if(enemyHP < 0 || enemyHP == 0) {
-					StageClear(enemyNAME);
-					break;
-				} else if(playerHP < 0 || playerHP == 0) {
+				playerHP = player.getHealth();
+				
+				//플레이어의 체력이 0이나 0보다 작아지면 적이 쓰러져도 무조건 게임 오버
+				if(playerHP < 0 || playerHP == 0) {
 					GameOver();
 					break;
+				} else if(enemyHP < 0 || enemyHP == 0) {
+					StageClear(enemyNAME);
+					break;
 				}
-			} else if(selectAS == 'S' || selectAS == 's') { //스킬 공격 선택지
-				playerHP = player.getHealth();
-				if(random.nextInt(100)<enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
+				
+			} else if(selectAS.equals("S") || selectAS.equals("s")) { //스킬 공격 선택지
+				
+				if(random.nextInt(100) < enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
 					System.out.println("==============================");
 					System.out.println("        Attack Missed!        ");
@@ -52,13 +56,18 @@ public class CharacterAct {
 				} else {
 					enemyHP = NormalAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
 				}
-				if(enemyHP < 0 || enemyHP == 0) {
-					StageClear(enemyNAME);
-					break;
-				} else if(playerHP < 0 || playerHP == 0) {
+				playerHP = player.getHealth();
+				
+				if(playerHP < 0 || playerHP == 0) {
 					GameOver();
 					break;
+				} else if(enemyHP < 0 || enemyHP == 0) {
+					StageClear(enemyNAME);
+					break;
 				}
+			} else if(selectAS.equals("")){
+				System.out.println("▶ Please Enter right command!");
+				System.out.println("");
 			} else {
 				System.out.println("▶ Please Enter right command!");
 				System.out.println("");
@@ -70,14 +79,13 @@ public class CharacterAct {
 		Player player = Player.getInstance();
 		Random random = new Random();
 		
-		int playerHP, playerDF, playerDX;
-		int damage;
+		//플레이어의 스탯 데이터 받아옴
+		int playerHP = player.getHealth();
+		int playerDF = player.getDefend();
+		int playerDX = player.getDexterity();
+		int damage = 0;
 		
-		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
-		playerDF = player.getDefend();
-		playerDX = player.getDexterity();
-		
-		if(random.nextInt(100)<playerDX) { //민첩성의 확률로 공격 or 빗나감 결정
+		if(random.nextInt(100) < playerDX) { //민첩성의 확률로 공격 or 빗나감 결정
 			System.out.println("");
 			System.out.println("==============================");
 			System.out.println("   " + enemyNAME + " Attack Missed!");
@@ -129,7 +137,7 @@ public class CharacterAct {
 		System.out.println("");
 		System.out.println("==============================");
 		System.out.println("    You use skill \"SMITE!\"   ");
-		damage = (playerAT*2) - enemyDF; //데미지 계산식
+		damage = (playerAT * 2) - enemyDF; //데미지 계산식
 		enemyHP = enemyHP - damage; //적 체력에 데미지 계산
 		System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
 		System.out.println("==============================");
@@ -154,7 +162,6 @@ public class CharacterAct {
 		
 		while(true) { //Enter키를 통해 진행을 위한 조건
 			if(insert.length() == 0) {
-				//scan.close();
 				break;
 			}
 			else {
@@ -165,7 +172,7 @@ public class CharacterAct {
 	}
 	//게임 오버 시 출력 메소드
 	public void GameOver() {
-		char selectYN;
+		String selectYN;
 		
 		System.out.println("==============================");
 		System.out.println("=                            =");
@@ -174,20 +181,29 @@ public class CharacterAct {
 		System.out.println("=                            =");
 		System.out.println("==============================");
 		System.out.println("");
-		System.out.print("Select : ");
-		selectYN = scan.nextLine().charAt(0);
+		while(true) {
+			System.out.print("Select : ");
+			selectYN = scan.nextLine();
 		
-		if(selectYN=='Y'||selectYN=='y') {
-			Player.maximumstat = 50; //스탯 포인트 초기화
-			PrintMethods.ClearScreen();
-			scan.close();
-			MainPage.main(null); //다시 시작
-		} else if(selectYN=='N'||selectYN=='n') {
-			System.out.println("");
-			System.out.println("===============================");
-			System.out.println("  Exit Game. Try Again Later!  ");
-			System.out.println("===============================");
-			System.exit(0);
+			if(selectYN.equals("Y") || selectYN.equals("y")) {
+				Player.maximumstat = 50; //스탯 포인트 초기화
+				PrintMethods.ClearScreen();
+				MainPage.main(null); //다시 시작
+				break;
+			} else if(selectYN.equals("N") || selectYN.equals("n")) {
+				System.out.println("");
+				System.out.println("===============================");
+				System.out.println("  Exit Game. Try Again Later!  ");
+				System.out.println("===============================");
+				System.exit(0);
+			} else if(selectYN.equals("")) {
+				System.out.println("▶ Please Enter right command!");
+				System.out.println("");
+			} else {
+				System.out.println("▶ Please Enter right command!");
+				System.out.println("");
+			}
 		}
+		
 	}
 }

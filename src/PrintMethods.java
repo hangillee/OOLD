@@ -30,7 +30,7 @@ public class PrintMethods {
 		System.out.println("");
 		System.out.println("       Press Enter to continue...       ");
 		String insert = scan.nextLine();
-		insert = scan.nextLine(); //nextInt();의 개행문자 문제 해결을 위한 추가 nextLine();
+		insert = scan.nextLine(); //nextInt();의 개행문자 문제 해결을 위한 추가 nextLine(); 없으면 prologue 바로 실행됨
 		
 		while(true) { //Enter키를 통해 진행을 위한 조건
 			if(insert.length() == 0) {
@@ -89,11 +89,11 @@ public class PrintMethods {
 					break;
 				} else {
 					System.out.println("▶ Please press right command.");
-					System.out.println("");
 				}
 			} else {
 				System.out.println("▶ Please press right command.");
-				System.out.println("");
+				PrintMainPage();
+				break;
 			}
 		}
 	}

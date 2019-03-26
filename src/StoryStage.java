@@ -15,15 +15,12 @@ public class StoryStage {
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
-		int enemyHP, enemyAT, enemyDF, enemyDX;
-		String enemyNAME;
-		
 		//처음 진흙 골렘 능력치 데이터 받아옴
-		enemyHP = dirtGolem.getHealth(); 
-		enemyAT = dirtGolem.getAttack();
-		enemyDF = dirtGolem.getDefend();
-		enemyDX = dirtGolem.getDexterity();
-		enemyNAME = dirtGolem.getName();
+		int enemyHP = dirtGolem.getHealth(); 
+		int enemyAT = dirtGolem.getAttack();
+		int enemyDF = dirtGolem.getDefend();
+		int enemyDX = dirtGolem.getDexterity();
+		String enemyNAME = dirtGolem.getName();
 		
 		System.out.println("============== Stage 01 ==============");
 		System.out.println("");
@@ -56,15 +53,12 @@ public class StoryStage {
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
-		int enemyHP, enemyAT, enemyDF, enemyDX;
-		String enemyNAME;
-		
 		//처음 바위 골렘 체력 데이터 받아옴
-		enemyHP = stoneGolem.getHealth(); 
-		enemyAT = stoneGolem.getAttack();
-		enemyDF = stoneGolem.getDefend();
-		enemyDX = stoneGolem.getDexterity();
-		enemyNAME = stoneGolem.getName();
+		int enemyHP = stoneGolem.getHealth(); 
+		int enemyAT = stoneGolem.getAttack();
+		int enemyDF = stoneGolem.getDefend();
+		int enemyDX = stoneGolem.getDexterity();
+		String enemyNAME = stoneGolem.getName();
 		
 		System.out.println("============== Stage 02 ==============");
 		System.out.println("");

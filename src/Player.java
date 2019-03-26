@@ -23,6 +23,8 @@ public class Player extends Character {
 		String name;
 		char selectYN;
 		
+		this.setName("");
+		
 		while(true) {
 			System.out.println("");
 			System.out.print("▶ Enter your name (Limit 8 words): ");
@@ -97,7 +99,7 @@ public class Player extends Character {
 		while(true) {
 			System.out.println("===================================");
 			System.out.println("Your Basic Defend Stat is [ 30 ]");
-			if(maximumstat == 0) { //투자 가능한 스탯 포인트 모두 소진 시
+			if(maximumstat < 1) { //투자 가능한 스탯 포인트 모두 소진 시
 				System.out.println("No more stat point remain");
 				System.out.println("===================================");
 				System.out.println("");
@@ -143,14 +145,13 @@ public class Player extends Character {
 		while(true) {
 			System.out.println("===================================");
 			System.out.println("Your Basic Dexterity Stat is [ 10 ]");
-			if(maximumstat == 0) { //투자 가능한 스탯 포인트 모두 소진 시
+			if(maximumstat < 1) { //투자 가능한 스탯 포인트 모두 소진 시
 				System.out.println("No more stat point remain");
 				System.out.println("===================================");
 				System.out.println("");
 				this.setDefend(30);
 				System.out.println("▶ Your Dexterity stat is [ " + this.getDexterity() + " ]");
 				System.out.println("");
-				//scan.close();
 				break;
 			}
 			System.out.println("Remain Stat Point : [ " + maximumstat + " ]");
