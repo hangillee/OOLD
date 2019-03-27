@@ -23,12 +23,16 @@ public class Player extends Character {
 		String name;
 		char selectYN;
 		
-		this.setName("");
-		
 		while(true) {
 			System.out.println("");
 			System.out.print("▶ Enter your name (Limit 8 words): ");
 			name = scan.nextLine();
+			
+			//게임 오버 후 재시작시 자동으로 이름에 공백 입력되는 문제 해결
+			if(name.equals("")) { 
+				name = scan.nextLine();
+			}
+			//이름 길이 제한
 			if(name.length() > 8) {
 				System.out.println("▶ Too long name! Please rename your name.");
 				continue;
@@ -149,7 +153,7 @@ public class Player extends Character {
 				System.out.println("No more stat point remain");
 				System.out.println("===================================");
 				System.out.println("");
-				this.setDefend(30);
+				this.setDexterity(10);
 				System.out.println("▶ Your Dexterity stat is [ " + this.getDexterity() + " ]");
 				System.out.println("");
 				break;
@@ -179,7 +183,6 @@ public class Player extends Character {
 				maximumstat = maximumstat - dexterity;
 				System.out.println("▶ Your Dexterity stat is [ " + this.getDexterity() + " ]");
 				System.out.println("");
-				//scan.close();
 				break;
 			}
 		}

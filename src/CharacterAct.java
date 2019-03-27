@@ -86,7 +86,6 @@ public class CharacterAct {
 		int damage = 0;
 		
 		if(random.nextInt(100) < playerDX) { //¹ÎÃ¸¼ºÀÇ È®·ü·Î °ø°Ý or ºø³ª°¨ °áÁ¤
-			System.out.println("");
 			System.out.println("==============================");
 			System.out.println("   " + enemyNAME + " Attack Missed!");
 			System.out.println("      Your left HP : " + playerHP);
@@ -184,7 +183,7 @@ public class CharacterAct {
 		while(true) {
 			System.out.print("Select : ");
 			selectYN = scan.nextLine();
-		
+			
 			if(selectYN.equals("Y") || selectYN.equals("y")) {
 				Player.maximumstat = 50; //½ºÅÈ Æ÷ÀÎÆ® ÃÊ±âÈ­
 				PrintMethods.ClearScreen();
