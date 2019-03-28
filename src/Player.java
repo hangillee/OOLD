@@ -84,7 +84,7 @@ public class Player extends Character {
 			}
 			attack = scan.nextInt();
 		
-			if(attack > maximumstat || attack < 1) {
+			if(attack > maximumstat || attack < 0) {
 				System.out.println("¢º Please add right value.");
 				System.out.println("");
 			} else {
@@ -130,7 +130,7 @@ public class Player extends Character {
 			
 			defend = scan.nextInt();
 		
-			if(defend > maximumstat || defend < 1) {
+			if(defend > maximumstat || defend < 0) {
 				System.out.println("¢º Please add right value.");
 				System.out.println("");
 			} else {
@@ -175,7 +175,7 @@ public class Player extends Character {
 			
 			dexterity = scan.nextInt();
 		
-			if(dexterity > maximumstat || dexterity < 1) {
+			if(dexterity > maximumstat || dexterity < 0) {
 				System.out.println("¢º Please add right value.");
 				System.out.println("");
 			} else {

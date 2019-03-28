@@ -5,13 +5,15 @@ public class StoryStage {
 		Player player = Player.getInstance();
 		int playerDefend = player.getDefend();
 		
+		//Builder Pattern
 		//진흙 골렘 체력:100, 공격력:플레이어 방어력 +10, 방어력:10, 민첩성:10
-		Enemy dirtGolem = new Enemy();
-		dirtGolem.setHealth(100);
-		dirtGolem.setAttack(playerDefend+10);
-		dirtGolem.setDefend(10);
-		dirtGolem.setDexterity(10);
-		dirtGolem.setName("DirtGolem");
+		Enemy dirtGolem = new Enemy.EnemyCreator()
+				.setHealth(100)
+				.setAttack(playerDefend+10)
+				.setDefend(10)
+				.setDexterity(10)
+				.setName("DIRT GOLEM")
+				.Create();
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
@@ -43,13 +45,15 @@ public class StoryStage {
 		Player player = Player.getInstance();
 		int playerDefend = player.getDefend();
 		
+		//Builder Pattern
 		//바위 골렘 체력:200, 공격력:플레이어 방어력+15, 방어력:20, 민첩성:20
-		Enemy stoneGolem = new Enemy(); 
-		stoneGolem.setHealth(200);
-		stoneGolem.setAttack(playerDefend+15);
-		stoneGolem.setDefend(20);
-		stoneGolem.setDexterity(20);
-		stoneGolem.setName("STONE GOLEM");
+		Enemy stoneGolem = new Enemy.EnemyCreator()
+				.setHealth(200)
+				.setAttack(playerDefend+15)
+				.setDefend(20)
+				.setDexterity(20)
+				.setName("STONE GOLEM")
+				.Create();
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
