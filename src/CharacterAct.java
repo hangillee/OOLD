@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class CharacterAct {
 	private static final Scanner scan = new Scanner(System.in);
-	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, int enemyDX, String enemyNAME) {
+	Reward reward = new Reward();
+	public void PlayerAct(int enemyHP, int enemyAT, int enemyDF, int enemyDX, String enemyNAME, int stageNumber) {
 		Player player = Player.getInstance();
 		Random random = new Random(); //공격 확률 결정
 		
@@ -40,6 +41,7 @@ public class CharacterAct {
 					break;
 				} else if(enemyHP < 0 || enemyHP == 0) {
 					StageClear(enemyNAME);
+					reward.GiveReward(enemyNAME, stageNumber);
 					break;
 				}
 				
@@ -54,7 +56,7 @@ public class CharacterAct {
 					System.out.println("");
 					EnemyAct(enemyAT, enemyDF, enemyNAME);
 				} else {
-					enemyHP = NormalAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
+					enemyHP = SkillAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
 				}
 				playerHP = player.getHealth();
 				
@@ -63,6 +65,7 @@ public class CharacterAct {
 					break;
 				} else if(enemyHP < 0 || enemyHP == 0) {
 					StageClear(enemyNAME);
+					reward.GiveReward(enemyNAME, "Long Sword", "Big Shield", stageNumber);
 					break;
 				}
 			} else if(selectAS.equals("")){
