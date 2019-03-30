@@ -41,7 +41,7 @@ public class CharacterAct {
 					break;
 				} else if(enemyHP < 0 || enemyHP == 0) {
 					StageClear(enemyNAME);
-					reward.GiveReward(enemyNAME, stageNumber);
+					reward.GiveReward(stageNumber);
 					break;
 				}
 				
@@ -65,7 +65,7 @@ public class CharacterAct {
 					break;
 				} else if(enemyHP < 0 || enemyHP == 0) {
 					StageClear(enemyNAME);
-					reward.GiveReward(enemyNAME, "Long Sword", "Big Shield", stageNumber);
+					reward.GiveReward(stageNumber);
 					break;
 				}
 			} else if(selectAS.equals("")){
@@ -159,18 +159,6 @@ public class CharacterAct {
 		System.out.println("                              ");
 		System.out.println("==============================");
 		System.out.println("");
-		System.out.println("  Press Enter to continue...");
-		String insert = scan.nextLine();
-		
-		while(true) { //Enter키를 통해 진행을 위한 조건
-			if(insert.length() == 0) {
-				break;
-			}
-			else {
-				System.out.println("  Please Press ENTER to continue!");
-				insert = scan.nextLine();
-			}
-		}
 	}
 	//게임 오버 시 출력 메소드
 	public void GameOver() {

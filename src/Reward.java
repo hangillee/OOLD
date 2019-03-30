@@ -19,12 +19,12 @@ public class Reward {
 		armourName = setArmourName(stagenumber);
 		equipStat = setEquipmentStat(stagenumber);
 		
-		System.out.println("==============================");
+		System.out.println("=============================================");
 		System.out.println("");
-		System.out.println("  Attack Item : " + weaponName);
-		System.out.println("  Defend Item : " + armourName);
+		System.out.println("  Attack Item : " + weaponName + " (Attack + " + equipStat + ")");
+		System.out.println("  Defend Item : " + armourName + " (Defend + " + equipStat + ")");
 		System.out.println("");
-		System.out.println("==============================");
+		System.out.println("=============================================");
 		System.out.println("");
 		
 		while(true) {
@@ -35,15 +35,31 @@ public class Reward {
 			selectAD = scan.nextLine();
 		
 			if(selectAD.equals("A") || selectAD.equals("a")) {
-				System.out.println("Now " + attackitem + " is your weapon!");
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("   Now " + weaponName + " is your weapon!");
+				System.out.println("          Attack + " + equipStat);
+				System.out.println("===================================");
 				player.setAttack(playerAT + equipStat);
+				System.out.println("");
+				PrintMethods.PressEnterToContinue();
 				break;
 			} else if(selectAD.equals("D") || selectAD.equals("d")) {
-				System.out.println("Now " + defenditem + " is your armour!");
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("   Now " + armourName + " is your armour!");
+				System.out.println("          Defend + " + equipStat);
+				System.out.println("===================================");
 				player.setDefend(playerDF + equipStat);
+				System.out.println("");
+				PrintMethods.PressEnterToContinue();
 				break;
 			} else {
-				System.out.println("Please enter right command!");
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("    Please Enter Right Command!    ");
+				System.out.println("===================================");
+				System.out.println("");
 			}
 		}
 		
@@ -84,7 +100,7 @@ public class Reward {
 			armourName = "Big Shield";
 			return armourName;
 		case 2:
-			armourName = "Golden Helmet";
+			armourName = "Golden Helm";
 			return armourName;
 		default:
 			return "";

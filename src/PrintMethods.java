@@ -7,6 +7,20 @@ public class PrintMethods {
 	      System.out.println("");
 	    }
 	}
+	public static void PressEnterToContinue() { //엔터키 입력으로 게임 진행을 위한 메소드
+		System.out.println("  Press Enter to continue...");
+		String insert = scan.nextLine();
+		
+		while(true) { //Enter키를 통해 진행을 위한 조건
+			if(insert.length() == 0) {
+				break;
+			}
+			else {
+				System.out.println("  Please Press ENTER to continue!");
+				insert = scan.nextLine();
+			}
+		}
+	}
 	
 	public static void PrintIntro() { //인트로 출력 메소드
 		System.out.println("========================================");
@@ -35,7 +49,6 @@ public class PrintMethods {
 		while(true) { //Enter키를 통해 진행을 위한 조건
 			if(insert.length() == 0) {
 				storyStage.Stage01();
-				//scan.close();
 				break;
 			}
 			else {
