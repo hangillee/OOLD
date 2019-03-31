@@ -47,7 +47,7 @@ public class CharacterAct {
 				
 			} else if(selectAS.equals("S") || selectAS.equals("s")) { //스킬 공격 선택지
 				
-				if(random.nextInt(100) < enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
+				if(random.nextInt(100) < enemyDX+10) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
 					System.out.println("==============================");
 					System.out.println("        Attack Missed!        ");

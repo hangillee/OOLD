@@ -36,6 +36,7 @@ public class StoryStage {
 		System.out.println("¢º " + enemyNAME + "'s DEF : " + enemyDF); //ÁøÈë °ñ·½ ¹æ¾î·Â
 		System.out.println("¢º " + enemyNAME + "'s DEX : " + enemyDX); //ÁøÈë °ñ·½ ¹ÎÃ¸¼º
 		System.out.println("");
+		PrintMethods.PrintPlayerStat();
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 1);
 		
@@ -76,6 +77,7 @@ public class StoryStage {
 		System.out.println("¢º " + enemyNAME + "'s STR : " + enemyAT); //¹ÙÀ§ °ñ·½ °ø°Ý·Â
 		System.out.println("¢º " + enemyNAME + "'s DEF : " + enemyDF); //¹ÙÀ§ °ñ·½ ¹æ¾î·Â
 		System.out.println("");
+		PrintMethods.PrintPlayerStat();
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 2);
 		//Stage03();

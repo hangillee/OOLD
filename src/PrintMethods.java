@@ -8,7 +8,7 @@ public class PrintMethods {
 	    }
 	}
 	public static void PressEnterToContinue() { //엔터키 입력으로 게임 진행을 위한 메소드
-		System.out.println("  Press Enter to continue...");
+		System.out.println("    Press Enter to continue...");
 		String insert = scan.nextLine();
 		
 		while(true) { //Enter키를 통해 진행을 위한 조건
@@ -109,5 +109,20 @@ public class PrintMethods {
 				break;
 			}
 		}
+	}
+	public static void PrintPlayerStat() {
+		Player player = Player.getInstance();
+		
+		String playerName = player.getName();
+		int playerHP = player.getHealth();
+		int playerAT = player.getAttack();
+		int playerDF = player.getDefend();
+		int playerDX = player.getDexterity();
+		
+		System.out.println("▶ " + playerName + "'s HP : " + playerHP); //플레이어 공격력
+		System.out.println("▶ " + playerName + "'s STR : " + playerAT); //플레이어 공격력
+		System.out.println("▶ " + playerName + "'s DEF : " + playerDF); //플레이어 방어력
+		System.out.println("▶ " + playerName + "'s DEX : " + playerDX); //플레이어 민첩성
+		System.out.println("");
 	}
 }

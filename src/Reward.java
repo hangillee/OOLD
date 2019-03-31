@@ -20,10 +20,9 @@ public class Reward {
 		equipStat = setEquipmentStat(stagenumber);
 		
 		System.out.println("=============================================");
-		System.out.println("");
-		System.out.println("  Attack Item : " + weaponName + " (Attack + " + equipStat + ")");
-		System.out.println("  Defend Item : " + armourName + " (Defend + " + equipStat + ")");
-		System.out.println("");
+		System.out.println("                 Reward Item                 ");
+		System.out.println("    Attack Item : " + weaponName + " (Attack + " + equipStat + ")");
+		System.out.println("    Defend Item : " + armourName + " (Defend + " + equipStat + ")");
 		System.out.println("=============================================");
 		System.out.println("");
 		
@@ -37,8 +36,8 @@ public class Reward {
 			if(selectAD.equals("A") || selectAD.equals("a")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("   Now " + weaponName + " is your weapon!");
-				System.out.println("          Attack + " + equipStat);
+				System.out.println("  Now " + weaponName + " is your weapon!");
+				System.out.println("            Attack + " + equipStat);
 				System.out.println("===================================");
 				player.setAttack(playerAT + equipStat);
 				System.out.println("");
@@ -47,8 +46,8 @@ public class Reward {
 			} else if(selectAD.equals("D") || selectAD.equals("d")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("   Now " + armourName + " is your armour!");
-				System.out.println("          Defend + " + equipStat);
+				System.out.println("  Now " + armourName + " is your armour!");
+				System.out.println("            Defend + " + equipStat);
 				System.out.println("===================================");
 				player.setDefend(playerDF + equipStat);
 				System.out.println("");
