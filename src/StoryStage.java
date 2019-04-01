@@ -106,7 +106,7 @@ public class StoryStage {
 		int enemyDX = hfDragon.getDexterity();
 		String enemyNAME = hfDragon.getName();
 		
-		System.out.println("============== Stage 02 ==============");
+		System.out.println("============== Stage 03 ==============");
 		System.out.println("");
 		System.out.println("            HELLFIRE DRAGON           ");
 		System.out.println("");
