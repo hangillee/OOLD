@@ -80,6 +80,46 @@ public class StoryStage {
 		PrintMethods.PrintPlayerStat();
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 2);
-		//Stage03();
+		Stage03();
+	}
+	public void Stage03() {
+		PrintMethods.ClearScreen();
+		Player player = Player.getInstance();
+		int playerDefend = player.getDefend();
+		
+		//Builder Pattern
+		//지옥불 용 체력:200, 공격력:플레이어 방어력+20, 방어력:25, 민첩성:25
+		Enemy hfDragon = new Enemy.EnemyCreator()
+				.setHealth(200)
+				.setAttack(playerDefend+20)
+				.setDefend(25)
+				.setDexterity(25)
+				.setName("HELLFIRE DRAGON")
+				.Create();
+		
+		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
+		
+		//처음 바위 골렘 체력 데이터 받아옴
+		int enemyHP = hfDragon.getHealth(); 
+		int enemyAT = hfDragon.getAttack();
+		int enemyDF = hfDragon.getDefend();
+		int enemyDX = hfDragon.getDexterity();
+		String enemyNAME = hfDragon.getName();
+		
+		System.out.println("============== Stage 02 ==============");
+		System.out.println("");
+		System.out.println("            HELLFIRE DRAGON           ");
+		System.out.println("");
+		System.out.println("======================================");
+		System.out.println("");
+		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
+		System.out.println("▶ " + enemyNAME + "'s HP : " + enemyHP); //바위 골렘 체력
+		System.out.println("▶ " + enemyNAME + "'s STR : " + enemyAT); //바위 골렘 공격력
+		System.out.println("▶ " + enemyNAME + "'s DEF : " + enemyDF); //바위 골렘 방어력
+		System.out.println("");
+		PrintMethods.PrintPlayerStat();
+		
+		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 2);
+		//Stage04();
 	}
 }

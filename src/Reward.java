@@ -40,6 +40,7 @@ public class Reward {
 				System.out.println("            Attack + " + equipStat);
 				System.out.println("===================================");
 				player.setAttack(playerAT + equipStat);
+				player.SetPlayerWeapon(weaponName);
 				System.out.println("");
 				PrintMethods.PressEnterToContinue();
 				break;
@@ -50,6 +51,7 @@ public class Reward {
 				System.out.println("            Defend + " + equipStat);
 				System.out.println("===================================");
 				player.setDefend(playerDF + equipStat);
+				player.SetPlayerArmour(armourName);
 				System.out.println("");
 				PrintMethods.PressEnterToContinue();
 				break;

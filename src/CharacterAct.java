@@ -8,7 +8,7 @@ public class CharacterAct {
 		Player player = Player.getInstance();
 		Random random = new Random(); //공격 확률 결정
 		
-		String selectAS; //선택지 변수
+		String selectASE; //선택지 변수
 		
 		int playerHP;
 		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
@@ -17,10 +17,11 @@ public class CharacterAct {
 			System.out.println("What should you do?");
 			System.out.println("A. NORMAL ATTACK");
 			System.out.println("S. SKILL ATTACK");
+			System.out.println("E. EQUIPMENT CHECK");
 			System.out.print("▶ Select : ");
-			selectAS = scan.nextLine();
+			selectASE = scan.nextLine();
 			
-			if(selectAS.equals("A") || selectAS.equals("a")) { //일반 공격 선택지
+			if(selectASE.equals("A") || selectASE.equals("a")) { //일반 공격 선택지
 				
 				if(random.nextInt(100) < enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
@@ -45,7 +46,7 @@ public class CharacterAct {
 					break;
 				}
 				
-			} else if(selectAS.equals("S") || selectAS.equals("s")) { //스킬 공격 선택지
+			} else if(selectASE.equals("S") || selectASE.equals("s")) { //스킬 공격 선택지
 				
 				if(random.nextInt(100) < enemyDX+10) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
@@ -68,7 +69,9 @@ public class CharacterAct {
 					reward.GiveReward(stageNumber);
 					break;
 				}
-			} else if(selectAS.equals("")){
+			} else if(selectASE.equals("E") || selectASE.equals("e")) {
+				EquipmentCheck();
+			} else if(selectASE.equals("")) {
 				System.out.println("▶ Please Enter right command!");
 				System.out.println("");
 			} else {
@@ -147,6 +150,42 @@ public class CharacterAct {
 		EnemyAct(enemyAT, enemyDF, enemyNAME); //적의 공격 턴
 		
 		return enemyHP;
+	}
+	public void EquipmentCheck() {
+		Player player = Player.getInstance();
+		
+		String weapon = player.GetPlayerWeapon();
+		String armour = player.GetPlayerArmour();
+		
+		if(weapon == null && armour == null) {
+			System.out.println("");
+			System.out.println("===================================");
+			System.out.println("   You don't have any EQUIPMENT!   ");
+			System.out.println("===================================");
+			System.out.println();
+		} else if(weapon != null && armour == null) {
+			System.out.println("");
+			System.out.println("===================================");
+			System.out.println("          Your EQUIPMENT           ");
+			System.out.println("       Weapon : " + weapon);
+			System.out.println("===================================");
+			System.out.println("");
+		} else if(weapon == null && armour != null) {
+			System.out.println("");
+			System.out.println("===================================");
+			System.out.println("          Your EQUIPMENT           ");
+			System.out.println("       Armour : " + armour);
+			System.out.println("===================================");
+			System.out.println("");
+		} else {
+			System.out.println("");
+			System.out.println("===================================");
+			System.out.println("          Your EQUIPMENT           ");
+			System.out.println("       Weapon : " + weapon);
+			System.out.println("       Armour : " + armour);
+			System.out.println("===================================");
+			System.out.println("");
+		}
 	}
 	//Stage 클리어 시 출력 메소드
 	public void StageClear(String enemyNAME) {

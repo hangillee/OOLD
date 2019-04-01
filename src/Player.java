@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Player extends Character {
 	private static final Scanner scan = new Scanner(System.in);
+	private String weapon;
+	private String armour;
 	
 	//Singleton
 	private Player() {}
@@ -186,5 +188,18 @@ public class Player extends Character {
 				break;
 			}
 		}
+	}
+	public void SetPlayerWeapon(String weaponName) { //플레이어 무기 정보
+		this.weapon = weaponName;
+	}
+	public String GetPlayerWeapon() {
+		return weapon;
+	}
+	
+	public void SetPlayerArmour(String armourName) { //플레이어 방어구 정보
+		this.armour = armourName;
+	}
+	public String GetPlayerArmour() {
+		return armour;
 	}
 }
