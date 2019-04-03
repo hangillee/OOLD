@@ -101,10 +101,16 @@ public class PrintMethods {
 					PrintMainPage(); //다시 메인 화면 출력
 					break;
 				} else {
-					System.out.println("▶ Please press right command.");
+					System.out.println("");
+					System.out.println("===================================");
+					System.out.println("    Please Enter Right Command!    ");
+					System.out.println("===================================");
 				}
 			} else {
-				System.out.println("▶ Please press right command.");
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("    Please Enter Right Command!    ");
+				System.out.println("===================================");
 				PrintMainPage();
 				break;
 			}
@@ -123,6 +129,12 @@ public class PrintMethods {
 		System.out.println("▶ " + playerName + "'s STR : " + playerAT); //플레이어 공격력
 		System.out.println("▶ " + playerName + "'s DEF : " + playerDF); //플레이어 방어력
 		System.out.println("▶ " + playerName + "'s DEX : " + playerDX); //플레이어 민첩성
+		System.out.println("");
+	}
+	public static void PrintEnemyStat(String enemyNAME, int enemyHP, int enemyAT, int enemyDF) {
+		System.out.println("▶ " + enemyNAME + "'s HP : " + enemyHP); //바위 골렘 체력
+		System.out.println("▶ " + enemyNAME + "'s STR : " + enemyAT); //바위 골렘 공격력
+		System.out.println("▶ " + enemyNAME + "'s DEF : " + enemyDF); //바위 골렘 방어력
 		System.out.println("");
 	}
 }

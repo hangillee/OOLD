@@ -8,7 +8,7 @@ public class CharacterAct {
 		Player player = Player.getInstance();
 		Random random = new Random(); //공격 확률 결정
 		
-		String selectASE; //선택지 변수
+		String selectACT; //선택지 변수
 		
 		int playerHP;
 		playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
@@ -18,10 +18,11 @@ public class CharacterAct {
 			System.out.println("A. NORMAL ATTACK");
 			System.out.println("S. SKILL ATTACK");
 			System.out.println("E. EQUIPMENT CHECK");
+			System.out.println("T. STATUS CHECK");
 			System.out.print("▶ Select : ");
-			selectASE = scan.nextLine();
+			selectACT = scan.nextLine();
 			
-			if(selectASE.equals("A") || selectASE.equals("a")) { //일반 공격 선택지
+			if(selectACT.equals("A") || selectACT.equals("a")) { //일반 공격 선택지
 				
 				if(random.nextInt(100) < enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
@@ -46,7 +47,7 @@ public class CharacterAct {
 					break;
 				}
 				
-			} else if(selectASE.equals("S") || selectASE.equals("s")) { //스킬 공격 선택지
+			} else if(selectACT.equals("S") || selectACT.equals("s")) { //스킬 공격 선택지
 				
 				if(random.nextInt(100) < enemyDX+10) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
@@ -69,9 +70,13 @@ public class CharacterAct {
 					reward.GiveReward(stageNumber);
 					break;
 				}
-			} else if(selectASE.equals("E") || selectASE.equals("e")) {
+			} else if(selectACT.equals("E") || selectACT.equals("e")) {
 				EquipmentCheck();
-			} else if(selectASE.equals("")) {
+			} else if(selectACT.equals("T") || selectACT.equals("t")) {
+				System.out.println("");
+				PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
+				PrintMethods.PrintPlayerStat();
+			} else if(selectACT.equals("")) {
 				System.out.println("▶ Please Enter right command!");
 				System.out.println("");
 			} else {

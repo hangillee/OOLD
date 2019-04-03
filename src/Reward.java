@@ -75,6 +75,9 @@ public class Reward {
 		case 2:
 			equipStat = 10;
 			return equipStat;
+		case 3:
+			equipStat = 15;
+			return equipStat;
 		default:
 			return 0;
 		}
@@ -89,6 +92,9 @@ public class Reward {
 		case 2:
 			weaponName = "Dark Spear";
 			return weaponName;
+		case 3:
+			weaponName = "Blood Axe";
+			return weaponName;
 		default:
 			return "";
 		}
@@ -102,6 +108,9 @@ public class Reward {
 			return armourName;
 		case 2:
 			armourName = "Golden Helm";
+			return armourName;
+		case 3:
+			armourName = "Plate Armour";
 			return armourName;
 		default:
 			return "";

@@ -30,12 +30,8 @@ public class StoryStage {
 		System.out.println("");
 		System.out.println("======================================");
 		System.out.println("");
-		System.out.println("DIRT GOLEM BLOCKS YOUR WAY!");
-		System.out.println("¢º " + enemyNAME + "'s HP : " + enemyHP); //ÁøÈë °ñ·½ Ã¼·Â
-		System.out.println("¢º " + enemyNAME + "'s STR : " + enemyAT); //ÁøÈë °ñ·½ °ø°Ý·Â
-		System.out.println("¢º " + enemyNAME + "'s DEF : " + enemyDF); //ÁøÈë °ñ·½ ¹æ¾î·Â
-		System.out.println("¢º " + enemyNAME + "'s DEX : " + enemyDX); //ÁøÈë °ñ·½ ¹ÎÃ¸¼º
-		System.out.println("");
+		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
+		PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
 		PrintMethods.PrintPlayerStat();
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 1);
@@ -73,10 +69,7 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
-		System.out.println("¢º " + enemyNAME + "'s HP : " + enemyHP); //¹ÙÀ§ °ñ·½ Ã¼·Â
-		System.out.println("¢º " + enemyNAME + "'s STR : " + enemyAT); //¹ÙÀ§ °ñ·½ °ø°Ý·Â
-		System.out.println("¢º " + enemyNAME + "'s DEF : " + enemyDF); //¹ÙÀ§ °ñ·½ ¹æ¾î·Â
-		System.out.println("");
+		PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
 		PrintMethods.PrintPlayerStat();
 		
 		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 2);
@@ -90,7 +83,7 @@ public class StoryStage {
 		//Builder Pattern
 		//Áö¿ÁºÒ ¿ë Ã¼·Â:200, °ø°Ý·Â:ÇÃ·¹ÀÌ¾î ¹æ¾î·Â+20, ¹æ¾î·Â:25, ¹ÎÃ¸¼º:25
 		Enemy hfDragon = new Enemy.EnemyCreator()
-				.setHealth(200)
+				.setHealth(300)
 				.setAttack(playerDefend+20)
 				.setDefend(25)
 				.setDexterity(25)
@@ -113,13 +106,10 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
-		System.out.println("¢º " + enemyNAME + "'s HP : " + enemyHP); //¹ÙÀ§ °ñ·½ Ã¼·Â
-		System.out.println("¢º " + enemyNAME + "'s STR : " + enemyAT); //¹ÙÀ§ °ñ·½ °ø°Ý·Â
-		System.out.println("¢º " + enemyNAME + "'s DEF : " + enemyDF); //¹ÙÀ§ °ñ·½ ¹æ¾î·Â
-		System.out.println("");
+		PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
 		PrintMethods.PrintPlayerStat();
 		
-		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 2);
+		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 3);
 		//Stage04();
 	}
 }
