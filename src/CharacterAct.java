@@ -16,7 +16,7 @@ public class CharacterAct {
 		while(true) { //적의 체력이 0이 될때까지
 			System.out.println("What should you do?");
 			System.out.println("A. NORMAL ATTACK");
-			System.out.println("S. SKILL ATTACK");
+			System.out.println("S. SELECT SKILL");
 			System.out.println("E. EQUIPMENT CHECK");
 			System.out.println("T. STATUS CHECK");
 			System.out.print("▶ Select : ");
@@ -48,18 +48,7 @@ public class CharacterAct {
 				}
 				
 			} else if(selectACT.equals("S") || selectACT.equals("s")) { //스킬 공격 선택지
-				
-				if(random.nextInt(100) < enemyDX+10) { //민첩성의 확률로 공격 or 빗나감 결정
-					System.out.println("");
-					System.out.println("==============================");
-					System.out.println("        Attack Missed!        ");
-					System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
-					System.out.println("==============================");
-					System.out.println("");
-					EnemyAct(enemyAT, enemyDF, enemyNAME);
-				} else {
-					enemyHP = SkillAttack(enemyHP, enemyAT, enemyDF, enemyNAME);
-				}
+				enemyHP = SkillSelect(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME);
 				playerHP = player.getHealth();
 				
 				if(playerHP < 0 || playerHP == 0) {
@@ -136,24 +125,75 @@ public class CharacterAct {
 		return enemyHP;
 	}
 	//스킬 공격 메소드
-	public int SkillAttack(int enemyHP, int enemyAT, int enemyDF, String enemyNAME) {
+	public int SkillSelect(int enemyHP, int enemyAT, int enemyDF, int enemyDX, String enemyNAME) {
 		Player player = Player.getInstance();
+		Random random = new Random(); //공격 확률 결정
 		
-		int playerAT;
+		int playerAT = player.getAttack();
+		int playerHP = player.getHealth();
+		
 		int damage;
+		int overHP;
+		String selectUA;
 		
-		playerAT = player.getAttack();
-		
-		System.out.println("");
-		System.out.println("==============================");
-		System.out.println("    You use skill \"SMITE!\"   ");
-		damage = (playerAT * 2) - enemyDF; //데미지 계산식
-		enemyHP = enemyHP - damage; //적 체력에 데미지 계산
-		System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
-		System.out.println("==============================");
-		System.out.println("");
-		EnemyAct(enemyAT, enemyDF, enemyNAME); //적의 공격 턴
-		
+		while(true) {
+			System.out.println("");
+			System.out.println("What kind of skill you use?");
+			System.out.println("U. Utility Skill");
+			System.out.println("A. Attack Skill");
+			System.out.print("▶ Select : ");
+			selectUA = scan.nextLine();
+			
+			if(selectUA.equals("U") || selectUA.equals("u")) {
+				if(playerHP == 100) {
+					System.out.println("");
+					System.out.println("==============================");
+					System.out.println("   Your HP is already FULL!   ");
+					System.out.println("==============================");
+					continue;
+				}
+				System.out.println("");
+				System.out.println("==============================");
+				System.out.println("     You use skill \"HEAL!\"    ");
+				playerHP += 10;
+				overHP = playerHP - 100;
+				if(playerHP > 100) {
+					playerHP = playerHP - overHP;
+				}
+				player.setHealth(playerHP);
+				System.out.println("      Your left HP : " + playerHP);
+				System.out.println("==============================");
+				System.out.println("");
+				
+				EnemyAct(enemyAT, enemyDF, enemyNAME); //적의 공격 턴
+				break;
+			} else if(selectUA.equals("A") || selectUA.equals("a")) {
+				if(random.nextInt(100) < enemyDX+10) { //민첩성의 확률로 공격 or 빗나감 결정
+					System.out.println("");
+					System.out.println("==============================");
+					System.out.println("        Attack Missed!        ");
+					System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
+					System.out.println("==============================");
+					System.out.println("");
+					EnemyAct(enemyAT, enemyDF, enemyNAME);
+				} else {
+					System.out.println("");
+					System.out.println("==============================");
+					System.out.println("    You use skill \"SMITE!\"   ");
+					damage = (playerAT * 2) - enemyDF; //데미지 계산식
+					enemyHP = enemyHP - damage; //적 체력에 데미지 계산
+					System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
+					System.out.println("==============================");
+					System.out.println("");
+					EnemyAct(enemyAT, enemyDF, enemyNAME); //적의 공격 턴
+				}
+				
+				break;
+			} else {
+				System.out.println("▶ Please Enter right command!");
+				System.out.println("");
+			}
+		}
 		return enemyHP;
 	}
 	public void EquipmentCheck() {
@@ -238,6 +278,6 @@ public class CharacterAct {
 				System.out.println("");
 			}
 		}
-		
 	}
+	
 }
