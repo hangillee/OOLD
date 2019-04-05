@@ -17,11 +17,6 @@ public class StoryStage {
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
-		//처음 진흙 골렘 능력치 데이터 받아옴
-		int enemyHP = dirtGolem.getHealth(); 
-		int enemyAT = dirtGolem.getAttack();
-		int enemyDF = dirtGolem.getDefend();
-		int enemyDX = dirtGolem.getDexterity();
 		String enemyNAME = dirtGolem.getName();
 		
 		System.out.println("============== Stage 01 ==============");
@@ -31,10 +26,10 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
-		PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
+		PrintMethods.PrintEnemyStat(dirtGolem);
 		PrintMethods.PrintPlayerStat();
 		
-		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 1);
+		characterAct.PlayerAct(dirtGolem, 1);
 		
 		Stage02();
 	}
@@ -55,11 +50,6 @@ public class StoryStage {
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
-		//처음 바위 골렘 체력 데이터 받아옴
-		int enemyHP = stoneGolem.getHealth(); 
-		int enemyAT = stoneGolem.getAttack();
-		int enemyDF = stoneGolem.getDefend();
-		int enemyDX = stoneGolem.getDexterity();
 		String enemyNAME = stoneGolem.getName();
 		
 		System.out.println("============== Stage 02 ==============");
@@ -69,10 +59,10 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
-		PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
+		PrintMethods.PrintEnemyStat(stoneGolem);
 		PrintMethods.PrintPlayerStat();
 		
-		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 2);
+		characterAct.PlayerAct(stoneGolem, 2);
 		Stage03();
 	}
 	public void Stage03() {
@@ -92,11 +82,6 @@ public class StoryStage {
 		
 		CharacterAct characterAct = new CharacterAct(); //플레이어, 적의 행동 클래스
 		
-		//처음 바위 골렘 체력 데이터 받아옴
-		int enemyHP = hfDragon.getHealth(); 
-		int enemyAT = hfDragon.getAttack();
-		int enemyDF = hfDragon.getDefend();
-		int enemyDX = hfDragon.getDexterity();
 		String enemyNAME = hfDragon.getName();
 		
 		System.out.println("============== Stage 03 ==============");
@@ -106,10 +91,10 @@ public class StoryStage {
 		System.out.println("======================================");
 		System.out.println("");
 		System.out.println(enemyNAME + " BLOCKS YOUR WAY!");
-		PrintMethods.PrintEnemyStat(enemyNAME, enemyHP, enemyAT, enemyDF);
+		PrintMethods.PrintEnemyStat(hfDragon);
 		PrintMethods.PrintPlayerStat();
 		
-		characterAct.PlayerAct(enemyHP, enemyAT, enemyDF, enemyDX, enemyNAME, 3);
+		characterAct.PlayerAct(hfDragon, 3);
 		//Stage04();
 	}
 }

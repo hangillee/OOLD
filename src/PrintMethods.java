@@ -7,6 +7,7 @@ public class PrintMethods {
 	      System.out.println("");
 	    }
 	}
+	
 	public static void PressEnterToContinue() { //엔터키 입력으로 게임 진행을 위한 메소드
 		System.out.println("    Press Enter to continue...");
 		String insert = scan.nextLine();
@@ -131,10 +132,65 @@ public class PrintMethods {
 		System.out.println("▶ " + playerName + "'s DEX : " + playerDX); //플레이어 민첩성
 		System.out.println("");
 	}
-	public static void PrintEnemyStat(String enemyNAME, int enemyHP, int enemyAT, int enemyDF) {
-		System.out.println("▶ " + enemyNAME + "'s HP : " + enemyHP); //바위 골렘 체력
-		System.out.println("▶ " + enemyNAME + "'s STR : " + enemyAT); //바위 골렘 공격력
-		System.out.println("▶ " + enemyNAME + "'s DEF : " + enemyDF); //바위 골렘 방어력
+	public static void PrintEnemyStat(Enemy enemy) {
+		//적 스탯 데이터 받아옴
+		int enemyHP = enemy.getHealth(); 
+		int enemyAT = enemy.getAttack();
+		int enemyDF = enemy.getDefend();
+		int enemyDX = enemy.getDexterity();
+		String enemyNAME = enemy.getName();
+		
+		System.out.println("▶ " + enemyNAME + "'s HP : " + enemyHP);
+		System.out.println("▶ " + enemyNAME + "'s STR : " + enemyAT);
+		System.out.println("▶ " + enemyNAME + "'s DEF : " + enemyDF);
+		System.out.println("▶ " + enemyNAME + "'s DEX : " + enemyDX);
 		System.out.println("");
+	}
+	//Stage 클리어 시 출력 메소드
+	public static void StageClear(String enemyNAME) {
+		Player player = Player.getInstance();
+		
+		player.setHealth(100); //플레이어 클리어 후 체력 초기화
+		System.out.println("==============================");
+		System.out.println("                              ");
+		System.out.println("  " + enemyNAME + " DOWN! YOU WIN!  ");
+		System.out.println("                              ");
+		System.out.println("==============================");
+		System.out.println("");
+	}
+	//게임 오버 시 출력 메소드
+	public static void GameOver() {
+		String selectYN;
+		
+		System.out.println("==============================");
+		System.out.println("=                            =");
+		System.out.println("=    GAME OVER! YOU DIED!    =");
+		System.out.println("=        Retry? (Y/N)        =");
+		System.out.println("=                            =");
+		System.out.println("==============================");
+		System.out.println("");
+		while(true) {
+			System.out.print("Select : ");
+			selectYN = scan.nextLine();
+			
+			if(selectYN.equals("Y") || selectYN.equals("y")) {
+				Player.maximumstat = 50; //스탯 포인트 초기화
+				PrintMethods.ClearScreen();
+				MainPage.main(null); //다시 시작
+				break;
+			} else if(selectYN.equals("N") || selectYN.equals("n")) {
+				System.out.println("");
+				System.out.println("===============================");
+				System.out.println("  Exit Game. Try Again Later!  ");
+				System.out.println("===============================");
+				System.exit(0);
+			} else if(selectYN.equals("")) {
+				System.out.println("▶ Please Enter right command!");
+				System.out.println("");
+			} else {
+				System.out.println("▶ Please Enter right command!");
+				System.out.println("");
+			}
+		}
 	}
 }
