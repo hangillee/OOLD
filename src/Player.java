@@ -4,6 +4,7 @@ public class Player extends Character {
 	private static final Scanner scan = new Scanner(System.in);
 	private String weapon;
 	private String armour;
+	private int skillStat;
 	
 	//Singleton
 	private Player() {}
@@ -189,14 +190,22 @@ public class Player extends Character {
 			}
 		}
 	}
-	public void SetPlayerWeapon(String weaponName) { //플레이어 무기 정보
+	//플레이어 스킬 스탯
+	public void setPlayerSkillStat(int skillStat) {
+		this.skillStat = skillStat;
+	}
+	public int getPlayerSkillStat() {
+		return skillStat;
+	}
+	//플레이어 무기 정보
+	public void SetPlayerWeapon(String weaponName) {
 		this.weapon = weaponName;
 	}
 	public String GetPlayerWeapon() {
 		return weapon;
 	}
-	
-	public void SetPlayerArmour(String armourName) { //플레이어 방어구 정보
+	//플레이어 방어구 정보
+	public void SetPlayerArmour(String armourName) {
 		this.armour = armourName;
 	}
 	public String GetPlayerArmour() {

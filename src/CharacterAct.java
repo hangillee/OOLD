@@ -11,9 +11,13 @@ public class CharacterAct {
 		
 		String selectACT; //선택지 변수
 		
-		int playerHP = player.getHealth(); //플레이어의 스탯 데이터 받아옴
+		//플레이어의 스탯 데이터
+		int playerHP = player.getHealth();
+		if(stageNumber == 1) {
+			player.setPlayerSkillStat(10);
+		}
 		
-		//적의 스탯 데이터 받아옴
+		//적의 스탯 데이터
 		int enemyDX = enemy.getDexterity();
 		int enemyHP = enemy.getHealth();
 		String enemyNAME = enemy.getName();
@@ -49,6 +53,7 @@ public class CharacterAct {
 				} else if(enemyHP < 0 || enemyHP == 0) {
 					PrintMethods.StageClear(enemyNAME);
 					reward.GiveReward(stageNumber);
+					reward.UpgradeSkill(stageNumber);
 					break;
 				}
 				
@@ -62,6 +67,7 @@ public class CharacterAct {
 				} else if(enemyHP < 0 || enemyHP == 0) {
 					PrintMethods.StageClear(enemyNAME);
 					reward.GiveReward(stageNumber);
+					reward.UpgradeSkill(stageNumber);
 					break;
 				}
 			} else if(selectACT.equals("E") || selectACT.equals("e")) {
@@ -173,7 +179,8 @@ public class CharacterAct {
 		Player player = Player.getInstance();
 
 		int playerHP = player.getHealth();
-		int overHP;
+		int skillStat = player.getPlayerSkillStat();
+		int overHP = 0;
 		
 		if(playerHP == 100) {
 			System.out.println("");
@@ -185,7 +192,7 @@ public class CharacterAct {
 		System.out.println("");
 		System.out.println("==============================");
 		System.out.println("     You use skill \"HEAL!\"    ");
-		playerHP += 10;
+		playerHP += skillStat;
 		overHP = playerHP - 100;
 		if(playerHP > 100) {
 			playerHP = playerHP - overHP;
@@ -201,6 +208,7 @@ public class CharacterAct {
 		Random random = new Random(); //공격 확률 결정
 		
 		int playerAT = player.getAttack();
+		int skillStat = player.getPlayerSkillStat();
 		int damage;
 		
 		//적의 스탯 데이터 받아옴
@@ -221,7 +229,7 @@ public class CharacterAct {
 			System.out.println("");
 			System.out.println("==============================");
 			System.out.println("    You use skill \"SMITE!\"   ");
-			damage = (playerAT * 2) - enemyDF; //데미지 계산식
+			damage = (skillStat + playerAT) - enemyDF; //데미지 계산식
 			enemyHP = enemyHP - damage; //적 체력에 데미지 계산
 			enemy.setHealth(enemyHP);
 			System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);

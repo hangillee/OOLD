@@ -65,6 +65,68 @@ public class Reward {
 		}
 		
 	}
+	public void UpgradeSkill(int stagenumber) {
+		Player player = Player.getInstance();
+		
+		String selectUA;
+		int skillStat = 0;
+		
+		//스테이지 클리어 별 주어지는 스킬 업그레이드 스탯
+		switch(stagenumber) {
+		case 1:
+			skillStat = 15;
+			break;
+		case 2:
+			skillStat = 20;
+			break;
+		case 3:
+			skillStat = 25;
+			break;
+		default:
+			skillStat = 0;
+			break;
+		}
+		
+		System.out.println("===================================");
+		System.out.println("         Upgrade Your Skill        ");
+		System.out.println("      Utility Skill : \"HEAL\"");
+		System.out.println("      Attack Skill : \"SMITE\"");
+		System.out.println("===================================");
+		
+		while(true) {
+			System.out.println("");
+			System.out.println("Select skill to upgrade!");
+			System.out.println("U. Utility Skill");
+			System.out.println("A. Attack Skill");
+			System.out.print("▶ Select : ");
+			selectUA = scan.nextLine();
+			
+			if(selectUA.equals("U") || selectUA.equals("u")) {
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("  You upgrade utility skill \"HEAL\"");
+				System.out.println("          HEAL + " + skillStat);
+				System.out.println("===================================");
+				player.setPlayerSkillStat(skillStat);
+				break;
+			} else if(selectUA.equals("A") || selectUA.equals("a")) {
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("  You upgrade attack skill \"SMITE\"");
+				System.out.println("          SMITE + " + skillStat);
+				System.out.println("===================================");
+				player.setPlayerSkillStat(skillStat);
+				break;
+			} else {
+				System.out.println("");
+				System.out.println("===================================");
+				System.out.println("    Please Enter Right Command!    ");
+				System.out.println("===================================");
+				System.out.println("");
+			}
+		}
+		
+	}
 	public int setEquipmentStat(int stagenumber) {
 		int equipStat = 0;
 		
