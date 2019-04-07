@@ -15,6 +15,8 @@ public class CharacterAct {
 		int playerHP = player.getHealth();
 		if(stageNumber == 1) {
 			player.setPlayerSkillStat(10);
+			player.setAttackSkillName("SMITE");
+			player.setUtilSkillName("HEAL");
 		}
 		
 		//적의 스탯 데이터
@@ -178,6 +180,8 @@ public class CharacterAct {
 	public void UtilitySkill() {
 		Player player = Player.getInstance();
 
+		
+		String utilSkillName = player.getUtilSkillName();
 		int playerHP = player.getHealth();
 		int skillStat = player.getPlayerSkillStat();
 		int overHP = 0;
@@ -191,7 +195,7 @@ public class CharacterAct {
 		}
 		System.out.println("");
 		System.out.println("==============================");
-		System.out.println("     You use skill \"HEAL!\"    ");
+		System.out.println("     You use skill \""+ utilSkillName +"!\"    ");
 		playerHP += skillStat;
 		overHP = playerHP - 100;
 		if(playerHP > 100) {
@@ -207,6 +211,7 @@ public class CharacterAct {
 		Player player = Player.getInstance();
 		Random random = new Random(); //공격 확률 결정
 		
+		String attackSkillName = player.getAttackSkillName();
 		int playerAT = player.getAttack();
 		int skillStat = player.getPlayerSkillStat();
 		int damage;
@@ -228,7 +233,7 @@ public class CharacterAct {
 		} else {
 			System.out.println("");
 			System.out.println("==============================");
-			System.out.println("    You use skill \"SMITE!\"   ");
+			System.out.println("    You use skill \""+ attackSkillName +"!\"   ");
 			damage = (skillStat + playerAT) - enemyDF; //데미지 계산식
 			enemyHP = enemyHP - damage; //적 체력에 데미지 계산
 			enemy.setHealth(enemyHP);

@@ -2,9 +2,15 @@ import java.util.Scanner;
 
 public class Player extends Character {
 	private static final Scanner scan = new Scanner(System.in);
+	
+	//장비 이름 변수
 	private String weapon;
 	private String armour;
+	
+	//스킬 스탯 및 이름 변수
 	private int skillStat;
+	private String attackSkillName;
+	private String utilSkillName;
 	
 	//Singleton
 	private Player() {}
@@ -196,6 +202,20 @@ public class Player extends Character {
 	}
 	public int getPlayerSkillStat() {
 		return skillStat;
+	}
+	//플레이어 공격 스킬 이름
+	public void setAttackSkillName(String attackSkillName) {
+		this.attackSkillName = attackSkillName;
+	}
+	public String getAttackSkillName() {
+		return attackSkillName;
+	}
+	//플레이어 유틸 스킬 이름
+	public void setUtilSkillName(String utilSkillName) {
+		this.utilSkillName = utilSkillName;
+	}
+	public String getUtilSkillName() {
+		return utilSkillName;
 	}
 	//플레이어 무기 정보
 	public void SetPlayerWeapon(String weaponName) {

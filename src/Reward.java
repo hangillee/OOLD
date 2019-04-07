@@ -70,10 +70,14 @@ public class Reward {
 		
 		String selectUA;
 		int skillStat = 0;
+		String attackSkillName = "";
+		String utilSkillName = "";
 		
 		//스테이지 클리어 별 주어지는 스킬 업그레이드 스탯
 		switch(stagenumber) {
 		case 1:
+			attackSkillName = "HEAD BREAKER";
+			utilSkillName = "BLOOD DRAIN";
 			skillStat = 15;
 			break;
 		case 2:
@@ -87,11 +91,11 @@ public class Reward {
 			break;
 		}
 		
-		System.out.println("===================================");
-		System.out.println("         Upgrade Your Skill        ");
-		System.out.println("      Utility Skill : \"HEAL\"");
-		System.out.println("      Attack Skill : \"SMITE\"");
-		System.out.println("===================================");
+		System.out.println("=============================================");
+		System.out.println("              Upgrade Your Skill             ");
+		System.out.println("  Utility Skill : \""+ utilSkillName +"\" + "+ skillStat +" Stat");
+		System.out.println("  Attack Skill : \""+ attackSkillName + "\" + " + skillStat +" Stat");
+		System.out.println("=============================================");
 		
 		while(true) {
 			System.out.println("");
@@ -104,18 +108,20 @@ public class Reward {
 			if(selectUA.equals("U") || selectUA.equals("u")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("  You upgrade utility skill \"HEAL\"");
-				System.out.println("          HEAL + " + skillStat);
+				System.out.println("  You upgrade utility skill \""+ utilSkillName +"\"");
+				System.out.println("          " + utilSkillName + " + " + skillStat);
 				System.out.println("===================================");
 				player.setPlayerSkillStat(skillStat);
+				player.setUtilSkillName(utilSkillName);
 				break;
 			} else if(selectUA.equals("A") || selectUA.equals("a")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("  You upgrade attack skill \"SMITE\"");
-				System.out.println("          SMITE + " + skillStat);
+				System.out.println("  You upgrade attack skill \""+ attackSkillName +"\"");
+				System.out.println("          " + attackSkillName + " + " + skillStat);
 				System.out.println("===================================");
 				player.setPlayerSkillStat(skillStat);
+				player.setAttackSkillName(attackSkillName);
 				break;
 			} else {
 				System.out.println("");
