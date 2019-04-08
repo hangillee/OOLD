@@ -20,9 +20,9 @@ public class Reward {
 		equipStat = setEquipmentStat(stagenumber);
 		
 		System.out.println("=============================================");
-		System.out.println("                 Reward Item                 ");
-		System.out.println("    Attack Item : " + weaponName + " (Attack + " + equipStat + ")");
-		System.out.println("    Defend Item : " + armourName + " (Defend + " + equipStat + ")");
+		System.out.println("   Here are Reward Items!");
+		System.out.println("   Attack Item : " + weaponName + " (Attack + " + equipStat + ")");
+		System.out.println("   Defend Item : " + armourName + " (Defend + " + equipStat + ")");
 		System.out.println("=============================================");
 		System.out.println("");
 		
@@ -36,8 +36,8 @@ public class Reward {
 			if(selectAD.equals("A") || selectAD.equals("a")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("  Now " + weaponName + " is your weapon!");
-				System.out.println("            Attack + " + equipStat);
+				System.out.println("   Now " + weaponName + " is your weapon!");
+				System.out.println("   Attack + " + equipStat);
 				System.out.println("===================================");
 				player.setAttack(playerAT + equipStat);
 				player.SetPlayerWeapon(weaponName);
@@ -47,8 +47,8 @@ public class Reward {
 			} else if(selectAD.equals("D") || selectAD.equals("d")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("  Now " + armourName + " is your armour!");
-				System.out.println("            Defend + " + equipStat);
+				System.out.println("   Now " + armourName + " is your armour!");
+				System.out.println("   Defend + " + equipStat);
 				System.out.println("===================================");
 				player.setDefend(playerDF + equipStat);
 				player.SetPlayerArmour(armourName);
@@ -65,6 +65,7 @@ public class Reward {
 		}
 		
 	}
+	//스킬 강화 메소드
 	public void UpgradeSkill(int stagenumber) {
 		Player player = Player.getInstance();
 		
@@ -81,9 +82,13 @@ public class Reward {
 			skillStat = 15;
 			break;
 		case 2:
+			attackSkillName = "POWER SLAM";
+			utilSkillName = "VAMPIRIZING";
 			skillStat = 20;
 			break;
 		case 3:
+			attackSkillName = "CATACLYSM";
+			utilSkillName = "HOLY LIGHT";
 			skillStat = 25;
 			break;
 		default:
@@ -91,13 +96,12 @@ public class Reward {
 			break;
 		}
 		
-		System.out.println("=============================================");
-		System.out.println("              Upgrade Your Skill             ");
-		System.out.println("  Utility Skill : \""+ utilSkillName +"\" + "+ skillStat +" Stat");
-		System.out.println("  Attack Skill : \""+ attackSkillName + "\" + " + skillStat +" Stat");
-		System.out.println("=============================================");
-		
 		while(true) {
+			System.out.println("=============================================");
+			System.out.println("   Upgrade Your Skill             ");
+			System.out.println("   Utility Skill : \""+ utilSkillName +"\" + "+ skillStat +" Stat");
+			System.out.println("   Attack Skill : \""+ attackSkillName + "\" + " + skillStat +" Stat");
+			System.out.println("=============================================");
 			System.out.println("");
 			System.out.println("Select skill to upgrade!");
 			System.out.println("U. Utility Skill");
@@ -108,27 +112,30 @@ public class Reward {
 			if(selectUA.equals("U") || selectUA.equals("u")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("  You upgrade utility skill \""+ utilSkillName +"\"");
-				System.out.println("          " + utilSkillName + " + " + skillStat);
+				System.out.println("   You upgrade utility skill!");
+				System.out.println("   \"" + utilSkillName + "\" + " + skillStat);
 				System.out.println("===================================");
-				player.setPlayerSkillStat(skillStat);
+				player.setUtilSkillStat(skillStat);
 				player.setUtilSkillName(utilSkillName);
+				System.out.println("");
+				PrintMethods.PressEnterToContinue();
 				break;
 			} else if(selectUA.equals("A") || selectUA.equals("a")) {
 				System.out.println("");
 				System.out.println("===================================");
-				System.out.println("  You upgrade attack skill \""+ attackSkillName +"\"");
-				System.out.println("          " + attackSkillName + " + " + skillStat);
+				System.out.println("   You upgrade attack skill!");
+				System.out.println("   \"" + attackSkillName + "\" + " + skillStat);
 				System.out.println("===================================");
-				player.setPlayerSkillStat(skillStat);
+				player.setAttackSkillStat(skillStat);
 				player.setAttackSkillName(attackSkillName);
+				System.out.println("");
+				PrintMethods.PressEnterToContinue();
 				break;
 			} else {
 				System.out.println("");
 				System.out.println("===================================");
 				System.out.println("    Please Enter Right Command!    ");
 				System.out.println("===================================");
-				System.out.println("");
 			}
 		}
 		

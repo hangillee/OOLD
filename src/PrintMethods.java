@@ -180,9 +180,9 @@ public class PrintMethods {
 				break;
 			} else if(selectYN.equals("N") || selectYN.equals("n")) {
 				System.out.println("");
-				System.out.println("===============================");
-				System.out.println("  Exit Game. Try Again Later!  ");
-				System.out.println("===============================");
+				System.out.println("===================================");
+				System.out.println("    Exit Game. Try Again Later!  ");
+				System.out.println("===================================");
 				System.exit(0);
 			} else if(selectYN.equals("")) {
 				System.out.println("¢º Please Enter right command!");

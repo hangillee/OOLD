@@ -14,9 +14,12 @@ public class CharacterAct {
 		//플레이어의 스탯 데이터
 		int playerHP = player.getHealth();
 		if(stageNumber == 1) {
-			player.setPlayerSkillStat(10);
+			player.setAttackSkillStat(10);
 			player.setAttackSkillName("SMITE");
+			player.setUtilSkillStat(10);
 			player.setUtilSkillName("HEAL");
+			player.SetPlayerArmour(null);
+			player.SetPlayerWeapon(null);
 		}
 		
 		//적의 스탯 데이터
@@ -37,10 +40,10 @@ public class CharacterAct {
 				
 				if(random.nextInt(100) < enemyDX) { //민첩성의 확률로 공격 or 빗나감 결정
 					System.out.println("");
-					System.out.println("==============================");
-					System.out.println("        Attack Missed!        ");
-					System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
-					System.out.println("==============================");
+					System.out.println("===================================");
+					System.out.println("   ◈ Attack Missed! ◈");
+					System.out.println("   " + enemyNAME + "'s left HP : "+enemyHP);
+					System.out.println("===================================");
 					System.out.println("");
 					EnemyAct(enemy);
 				} else {
@@ -103,19 +106,19 @@ public class CharacterAct {
 		String enemyNAME = enemy.getName();
 		
 		if(random.nextInt(100) < playerDX) { //민첩성의 확률로 공격 or 빗나감 결정
-			System.out.println("==============================");
+			System.out.println("===================================");
 			System.out.println("   " + enemyNAME + " Attack Missed!");
-			System.out.println("      Your left HP : " + playerHP);
-			System.out.println("==============================");
+			System.out.println("   Your left HP : " + playerHP);
+			System.out.println("===================================");
 			System.out.println("");
 		} else {
-			System.out.println("==============================");
-			System.out.println("     " + enemyNAME + "'s Attack!");
+			System.out.println("===================================");
+			System.out.println("   " + enemyNAME + "'s Attack!");
 			damage = enemyAT - playerDF; //데미지 계산식
 			playerHP = playerHP - damage;
 			player.setHealth(playerHP);
-			System.out.println("      Your left HP : " + playerHP);
-			System.out.println("==============================");
+			System.out.println("   Your left HP : " + playerHP);
+			System.out.println("===================================");
 			System.out.println("");
 		}
 		
@@ -133,13 +136,13 @@ public class CharacterAct {
 		String enemyNAME = enemy.getName();
 		
 		System.out.println("");
-		System.out.println("==============================");
+		System.out.println("===================================");
 		System.out.println("   You hit the " + enemyNAME + "!");
 		damage = playerAT - enemyDF; //데미지 계산식
 		enemyHP = enemyHP - damage; //적 체력에 데미지 계산
 		enemy.setHealth(enemyHP);
-		System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
-		System.out.println("==============================");
+		System.out.println("   " + enemyNAME + "'s left HP : "+enemyHP);
+		System.out.println("===================================");
 		System.out.println("");
 		EnemyAct(enemy); //적의 공격 턴
 		
@@ -183,27 +186,27 @@ public class CharacterAct {
 		
 		String utilSkillName = player.getUtilSkillName();
 		int playerHP = player.getHealth();
-		int skillStat = player.getPlayerSkillStat();
+		int utilSkillStat = player.getUtilSkillStat();
 		int overHP = 0;
 		
 		if(playerHP == 100) {
 			System.out.println("");
-			System.out.println("==============================");
-			System.out.println("   Your HP is already FULL!   ");
-			System.out.println("==============================");
+			System.out.println("===================================");
+			System.out.println("      Your HP is already FULL!   ");
+			System.out.println("===================================");
 			return;
 		}
 		System.out.println("");
-		System.out.println("==============================");
-		System.out.println("     You use skill \""+ utilSkillName +"!\"    ");
-		playerHP += skillStat;
+		System.out.println("===================================");
+		System.out.println("   You use skill \""+ utilSkillName +"!\"    ");
+		playerHP += utilSkillStat;
 		overHP = playerHP - 100;
 		if(playerHP > 100) {
 			playerHP = playerHP - overHP;
 		}
 		player.setHealth(playerHP);
-		System.out.println("      Your left HP : " + playerHP);
-		System.out.println("==============================");
+		System.out.println("   Your left HP : " + playerHP);
+		System.out.println("===================================");
 		System.out.println("");
 	}
 	//공격 스킬 메소드
@@ -213,7 +216,7 @@ public class CharacterAct {
 		
 		String attackSkillName = player.getAttackSkillName();
 		int playerAT = player.getAttack();
-		int skillStat = player.getPlayerSkillStat();
+		int attackSkillStat = player.getAttackSkillStat();
 		int damage;
 		
 		//적의 스탯 데이터 받아옴
@@ -224,21 +227,21 @@ public class CharacterAct {
 		
 		if(random.nextInt(100) < enemyDX+10) { //민첩성의 확률로 공격 or 빗나감 결정
 			System.out.println("");
-			System.out.println("==============================");
-			System.out.println("        Attack Missed!        ");
-			System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
-			System.out.println("==============================");
+			System.out.println("===================================");
+			System.out.println("   Attack Missed!        ");
+			System.out.println("   " + enemyNAME + "'s left HP : "+enemyHP);
+			System.out.println("===================================");
 			System.out.println("");
 			EnemyAct(enemy);
 		} else {
 			System.out.println("");
-			System.out.println("==============================");
-			System.out.println("    You use skill \""+ attackSkillName +"!\"   ");
-			damage = (skillStat + playerAT) - enemyDF; //데미지 계산식
+			System.out.println("===================================");
+			System.out.println("   You use skill \""+ attackSkillName +"!\"   ");
+			damage = (attackSkillStat + playerAT) - enemyDF; //데미지 계산식
 			enemyHP = enemyHP - damage; //적 체력에 데미지 계산
 			enemy.setHealth(enemyHP);
-			System.out.println("  " + enemyNAME + "'s left HP : "+enemyHP);
-			System.out.println("==============================");
+			System.out.println("   " + enemyNAME + "'s left HP : "+enemyHP);
+			System.out.println("===================================");
 			System.out.println("");
 			EnemyAct(enemy); //적의 공격 턴
 		}
@@ -259,23 +262,23 @@ public class CharacterAct {
 		} else if(weapon != null && armour == null) {
 			System.out.println("");
 			System.out.println("===================================");
-			System.out.println("          Your EQUIPMENT           ");
-			System.out.println("       Weapon : " + weapon);
+			System.out.println("   Your EQUIPMENT           ");
+			System.out.println("   Weapon : " + weapon);
 			System.out.println("===================================");
 			System.out.println("");
 		} else if(weapon == null && armour != null) {
 			System.out.println("");
 			System.out.println("===================================");
-			System.out.println("          Your EQUIPMENT           ");
-			System.out.println("       Armour : " + armour);
+			System.out.println("   Your EQUIPMENT           ");
+			System.out.println("   Armour : " + armour);
 			System.out.println("===================================");
 			System.out.println("");
 		} else {
 			System.out.println("");
 			System.out.println("===================================");
-			System.out.println("          Your EQUIPMENT           ");
-			System.out.println("       Weapon : " + weapon);
-			System.out.println("       Armour : " + armour);
+			System.out.println("   Your EQUIPMENT           ");
+			System.out.println("   Weapon : " + weapon);
+			System.out.println("   Armour : " + armour);
 			System.out.println("===================================");
 			System.out.println("");
 		}

@@ -8,7 +8,8 @@ public class Player extends Character {
 	private String armour;
 	
 	//스킬 스탯 및 이름 변수
-	private int skillStat;
+	private int utilSkillStat;
+	private int attackSkillStat;
 	private String attackSkillName;
 	private String utilSkillName;
 	
@@ -197,11 +198,17 @@ public class Player extends Character {
 		}
 	}
 	//플레이어 스킬 스탯
-	public void setPlayerSkillStat(int skillStat) {
-		this.skillStat = skillStat;
+	public void setUtilSkillStat(int utilSkillStat) {
+		this.utilSkillStat = utilSkillStat;
 	}
-	public int getPlayerSkillStat() {
-		return skillStat;
+	public int getUtilSkillStat() {
+		return utilSkillStat;
+	}
+	public void setAttackSkillStat(int attackSkillStat) {
+		this.attackSkillStat = attackSkillStat;
+	}
+	public int getAttackSkillStat() {
+		return attackSkillStat;
 	}
 	//플레이어 공격 스킬 이름
 	public void setAttackSkillName(String attackSkillName) {
