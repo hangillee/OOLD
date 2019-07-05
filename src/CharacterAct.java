@@ -150,8 +150,14 @@ public class CharacterAct {
 	}
 	//스킬 공격 메소드
 	public int SkillSelect(Enemy enemy) {
+		Player player = Player.getInstance();
+		
 		//선택지 변수
 		String selectUA;
+		
+		//플레이어 스킬 이름 받아옴
+		String utilSkillName = player.getUtilSkillName();
+		String attackSkillName = player.getAttackSkillName();
 		
 		//적의 스탯 데이터 받아옴
 		int enemyHP = enemy.getHealth();
@@ -159,8 +165,8 @@ public class CharacterAct {
 		while(true) {
 			System.out.println("");
 			System.out.println("What kind of skill you use?");
-			System.out.println("U. Utility Skill");
-			System.out.println("A. Attack Skill");
+			System.out.println("U. Utility Skill - \"" + utilSkillName + "\"");
+			System.out.println("A. Attack Skill - \"" + attackSkillName + "\"");
 			System.out.print("▶ Select : ");
 			selectUA = scan.nextLine();
 			
